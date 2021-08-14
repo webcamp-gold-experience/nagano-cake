@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
 
+
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index, :update, :destroy]
     resources :products, only: [:index, :show, :create]
@@ -27,5 +28,11 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :products
     end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+  }
+
 end
