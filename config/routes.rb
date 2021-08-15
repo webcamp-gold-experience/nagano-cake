@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
 
-    root to: 'public/homes#top'
-    get '/about', to: 'public/homes#about'
+    root to: 'homes#top'
+    get '/about', to: 'homes#about'
 
-    resources :addresses, module: :public, only: [:index, :create, :edit, :update, :destroy]
-    resources :cart_products, module: :public, only: [:index, :update, :destroy]
-    resources :products, module: :public, only: [:index, :show, :create]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :cart_products, only: [:index, :update, :destroy]
+    resources :products, only: [:index, :show, :create]
 
-      post '/products/search', to: 'public/products#search'
+      post '/products/search', to: 'products#search'
 
-    resources :orders, module: :public, only: [:create, :index, :show]
+    resources :orders, only: [:create, :index, :show]
 
-      get '/orders/input', to: 'public/orders#input'
-      get '/orders/confirm', to: 'public/orders#confirm'
-      get '/orders/thanks', to: 'public/orders#thanks'
+      get '/orders/input', to: 'oders#input'
+      get '/orders/confirm', to: 'oders#confirm'
+      get '/orders/thanks', to: 'oders#thanks'
 
 
     namespace :admin do
