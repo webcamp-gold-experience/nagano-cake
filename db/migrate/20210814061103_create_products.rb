@@ -6,7 +6,11 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :introduction, null: false
       t.string :image_id, null: false
       t.integer :price, null: false
+<<<<<<< HEAD
       t.integer :sales_status, null: false, default: 0
+=======
+      t.integer :sales_status, default: 0, null: false
+>>>>>>> origin/develop
 
       t.timestamps
     end

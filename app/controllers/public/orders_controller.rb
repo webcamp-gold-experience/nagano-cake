@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  def input
+  def new
   end
 
   def confirm

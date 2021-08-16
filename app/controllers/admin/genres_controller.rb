@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+
   def index
   end
 
@@ -13,4 +14,5 @@ class Admin::GenresController < ApplicationController
 
   def destroy
   end
+
 end
