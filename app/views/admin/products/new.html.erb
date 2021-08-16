@@ -37,12 +37,12 @@
       <tr>
         <td>販売ステータス</td>
         <td>
-          <%#= f.select :sales_status, Product.sales_statuses.keys,{include_blank: '選択してください'},{class: "exhibition__select"} %>
-          <%= f.radio_button :sales_status, "販売中"  %>
+          <%#= f.select :sales_status, Product.sales_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
+          <%= f.radio_button :sales_status, :on_sale %>
           <%= f.label :販売中, class: "job_type_label" %>
         </td>
         <td>
-          <%= f.radio_button :sales_status, "販売停止中" %>
+          <%= f.radio_button :sales_status, :stop_sale %>
           <%= f.label :販売停止中, class: "job_type_label" %>
         </td>
       </tr>

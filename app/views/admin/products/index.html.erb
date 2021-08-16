@@ -15,9 +15,10 @@
     <tr>
       <td><%= product.id.to_s %></td>
       <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= product.genre %></td>
-      <td><%= product.sales_status %></td>
+      <td><%= product.price %>円</td>
+      <td><%= product.genre.name %></td>
+      <td><%= product.sales_status_i18n %></td>
     </tr>
   </tbody>
+<% end %>
 </table>

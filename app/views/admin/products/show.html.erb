@@ -12,20 +12,23 @@
    </tr>
    <tr>
      <th>ジャンル</th>
-     <th><%= @product.genre %></th>
+     <th><%= @product.genre.name %></th>
    </tr>
    <tr>
      <th>
        税込価格<br>
        (税抜価格)
      </th>
-     <th><%= @product.price %> (<%= @product.price * 1. %>)円</th>
+     <th><%= @product.price %> (<%= @product.include_tax.round %>)円</th>
    </tr>
    <tr>
      <th>販売ステータス</th>
-     <th><%= @product.sales_status %></th>
+     <th><%= @product.sales_status_i18n %></th>
    </tr>
-   <tr><%= link_to "編集する", edit_admin_product_path(@product), class: "btn btn-success" %></tr>
+   <tr>
+    <td>
+     <%= link_to "編集する", edit_admin_product_path(@product), class: "btn btn-success" %>
+    </td>
+   </tr>
  </table>
- 
- 
+
