@@ -7,7 +7,4 @@ class Public::ProductsController < ApplicationController
 
   def search
   end
-
-  def create
-  end
 end
