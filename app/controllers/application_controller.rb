@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # アカウント登録後のリダイレクト先
     def after_sign_up_path_for(resource)
-      _path
+      root_path
     end
 
     # ログイン後のリダイレクト先
