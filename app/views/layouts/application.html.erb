@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark">
@@ -19,10 +19,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <% if custmer_signed_in? %>
+              <% if customer_signed_in? %>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to 'マイページ', custmer_path(current_custmer.id), class: 'nav-link text-light' %>
+                    <%= link_to 'マイページ', customer_path(current_customer.id), class: 'nav-link text-light' %>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -37,11 +37,16 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to 'ログアウト', destroy_custmer_session_path, method: :delete, class: 'nav-link text-light' %>
+                    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
                   </div>
                 </li>
-                
-              <% elsif custmer_signed_out? %>
+
+              <% elsif customer_signed_out? %>
+                <div>
+                  ようこそ
+                  <%= customer.last_name %>
+                  さん
+                </div>
                 <li class="nav-item">
                   <div class="social">
                     <%= link_to 'About', about_path, class: 'nav-link text-light' %>
@@ -54,15 +59,15 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to '新規登録', new_custmer_registration_path, class: 'nav-link text-light' %>
+                    <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to 'ログイン', custmer_session_path, class: 'nav-link text-light' %>
+                    <%= link_to 'ログイン', customer_session_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
-                
+
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
                   <div class="social">
@@ -71,7 +76,7 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to '会員一覧', admin_custmers_path, class: 'nav-link text-light' %>
+                    <%= link_to '会員一覧', admin_customers_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -89,7 +94,7 @@
                     <%= link_to 'ログイン', admin_session_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
-                
+
               <% else %>
                 <li class="nav-item">
                   <div class="social">
@@ -103,12 +108,12 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to '新規登録', new_custmer_registration_path, class: 'nav-link text-light' %>
+                    <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to 'ログイン', custmer_session_path, class: 'nav-link text-light' %>
+                    <%= link_to 'ログイン', customer_session_path, class: 'nav-link text-light' %>
                   </div>
                 </li>
               <% end %>
