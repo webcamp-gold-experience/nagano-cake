@@ -13,7 +13,6 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.genre_id = 1
     if @product.save
       redirect_to admin_product_path(@product.id)
     else
@@ -28,15 +27,17 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product = Product.update(update_product)
-       @product.update(genre_id:1)
-       admin_product_path(@product)
+    if @product.update(product_params)
+       redirect_to admin_product_path(@product.id)
     else
      render :edit
     end
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to  admin_products_path
   end
 
   private
@@ -44,7 +45,5 @@ class Admin::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:genre_id, :name, :introduction, :image, :price, :sales_status)
   end
-  def update_product
-    params.require(:product).permit(:name, :introduction, :image, :price, :sales_status)
-  end
+
 end

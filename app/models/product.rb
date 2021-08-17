@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   attachment :image
   belongs_to :genre
-  
+
   def include_tax
     self.price*1.10
   end
