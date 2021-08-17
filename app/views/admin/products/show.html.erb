@@ -1,11 +1,11 @@
 <h2>商品詳細</h2>
 <div class="container">
   <div class="row">
-    <div class ="col-sm-7 col-lg-5">
-      <%= attachment_image_tag @product, :image, :fill, 200, 150, format: 'jpeg' %>
+    <div class ="col-sm-12 col-md-6 col-lg-5">
+      <%= attachment_image_tag @product, :image, :fill, 250, 200, format: 'jpeg' %>
     </div>
-    <div class ="col-sm-5 col-lg-7">
-      <table>
+    <div class ="col-sm-12 col-md-6 col-lg-7">
+      <table class="table">
         <tr>
           <th>商品名</th>
           <th><%= @product.name %></th>
@@ -26,12 +26,18 @@
           <th><%= @product.price %> (<%= @product.include_tax.round %>)円</th>
         </tr>
         <tr>
-          <th>販売ステータス</th>
-          <th class="text-success"><%= @product.sales_status_i18n %></th>
+          <th class="text-nowrap pr-3">販売ステータス</th>
+
+          <% if @product.sales_status_before_type_cast == 0 %>
+            <th class="text-success"><%= @product.sales_status_i18n %></th>
+          <% elsif @product.sales_status_before_type_cast == 1 %>
+            <th class="text-muted"><%= @product.sales_status_i18n %></th>
+          <% end %>
+
         </tr>
         <tr>
          <td>
-          <%= link_to "編集する", edit_admin_product_path(@product), class: "btn btn-success" %>
+          <%= link_to "編集する", edit_admin_product_path(@product), class: "btn btn-success text-nowrap" %>
          </td>
          <td>
           <%= link_to "削除する", admin_product_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に消しますか？"} %>
