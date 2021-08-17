@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+    root to: 'public/homes#top'
+    get '/about', to: 'public/homes#about'
 
     resources :addresses, module: :public, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, module: :public, only: [:index, :create, :update, :destroy]
@@ -28,17 +30,15 @@ Rails.application.routes.draw do
       resources :customers, only: [:index, :show, :edit, :update]
     end
 
-  #devise_for :admins, controllers: {
-  #sessions:      'admins/sessions',
-  #passwords:     'admins/passwords',
-  #registrations: 'admins/registrations'
-  #}
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+  }
 
-  #devise_for :customers, controllers: {
-  #sessions:      'customers/sessions',
-  #passwords:     'customers/passwords',
-  #registrations: 'customers/registrations'
-  #}
-    root to: 'public/homes#top'
-    get '/about', to: 'public/homes#about'
+  devise_for :customers, controllers: {
+  sessions:      'customers/sessions',
+  passwords:     'customers/passwords',
+  registrations: 'customers/registrations'
+  }
 end
