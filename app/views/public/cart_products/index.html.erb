@@ -1,2 +1,36 @@
-<h1>Public::CartProducts#index</h1>
-<p>Find me in app/views/public/cart_products/index.html.erb</p>
+<div class="col-md-8 offset-md-1">
+  <h2>ショッピングカート</h2>
+  <table class="table table-hover table-inverse">
+    <thread>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+      <tbody>
+        <% @cart_products.each do |cart_product| %>
+        <tr>
+          <td>
+            <%= cart_product.name %>
+          </td>
+          <td>
+            <%= cart_product.price %>
+          </td>
+          <td>
+            <%= f.select :amount, options_for_select(@numbers, {selected: cart＿product.amount} ) %>
+            <%= link_to '変更', cart_product_path(cart_product), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= cart_product.price*cart_product.amount %>
+          </td>
+          <td>
+            <%= link_to '削除する', cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </thread>
+  </table>
+</div>
