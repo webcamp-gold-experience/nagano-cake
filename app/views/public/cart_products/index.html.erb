@@ -1,11 +1,11 @@
-<div class="col-md-8 offset-md-1">
-  <div>
-    <h5>ショッピングカート</h5>
-    <%= link_to 'カートを空にする', cart_products_destroy_all_path, method: :delete, class: "btn btn-danger" %>
-  </div>
-  <% @sum = 0 %>
-  <% @cart_products.each do |cart_product| %>
-    <table class="table table-hover table-inverse">
+<div class="d-flex justify-content-between m-5">
+  <h5>ショッピングカート</h5>
+  <%= link_to 'カートを空にする', cart_products_destroy_all_path, method: :delete, class: "btn btn-danger" %>
+</div>
+
+<div class="col-md-8 offset-md-1 m-3">
+  <table class="table table-hover table-inverse">
+    <% @cart_products.each do |cart_product| %>
       <thread>
         <tr>
           <th>商品名</th>
@@ -35,16 +35,14 @@
           </tr>
         </tbody>
       </thread>
-    </table>
+    <% end %>
+  </table>
+  
+  <div class="d-flex justify-content-between m-5">
     <%= link_to '買い物を続ける', products_path, class: "btn btn-info" %>
-    <table>
-      <tr>
-        <th>合計金額</th>
-        <th>
-          <% @sum += (cart_product.price*cart_product.amount) %>
-          <%= @sum %>
-        </th>
-      </tr>
-    </table>
-  <% end %>  
+    <tr>
+      <th>合計金額</th>
+      <th></th>
+    </tr>
+  </div>
 </div>
