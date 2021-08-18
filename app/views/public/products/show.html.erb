@@ -1,2 +1,21 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="genre_search col-3">
+     <%= render "genre_search", genres: @genres %>
+    </div>
+    <div class="product-box col-9 d-flex flex-row">
+      <div class="product-image mr-5">
+        <%= attachment_image_tag @product, :image, :fill, 250, 200, format: 'jpeg' %>
+      </div>
+      <div class="product-detail mt-2">
+        <h4><strong><%= @product.name %></h4></strong>
+        <p><%= @product.introduction %></p>
+        <div class="price d-flex flex-row mt-6">
+          <h5>¥<%= @product.include_tax.round %></h5>
+          <p>(税込)</p>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+</div>

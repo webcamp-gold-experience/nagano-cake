@@ -1,6 +1,6 @@
 <h2>会員一覧</h2>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>会員ID</th>
@@ -18,7 +18,7 @@
           <% end %>
         </td>
         <td><%= customer.email %></td>
-        <td><%= customer.is_deleted %></td>
+        <td><%= customer.is_deleted_i18n %></td>
       </tr>
     <% end %>
   </tbody>
