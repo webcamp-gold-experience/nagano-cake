@@ -12,5 +12,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, format: { with: /\A\d{10,11}\z/}
 
-         
+  enum is_deleted: { 有効: true, 退会: false }
+
 end

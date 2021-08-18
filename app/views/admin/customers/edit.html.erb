@@ -52,7 +52,15 @@
           <div class="form-group">
             <tr>
               <th>会員ステータス</th>
-              <th></th>
+              <th>
+                <div class="field">
+                  <%= f.radio_button :is_deleted, :true %>
+                  <%= f.label :有効 %>
+
+                  <%= f.radio_button :is_deleted, :false %>
+                  <%= f.label :退会 %>
+                </div>
+              </th>
             </tr>
           </div>
       </table>
