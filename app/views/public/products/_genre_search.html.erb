@@ -1,4 +1,18 @@
-<h4>ジャンル検索</h4>
-<% genres.each do |genre| %>
-  <p><%= genre.name %></p>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+       <th class="border-white"> ジャンル検索</th>
+    </tr>
+  </thead>
+  <% @genres.each do |genre| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to genre.name, products_search_path(id: genre.id), method: :post %>
+        </td>
+       </tr>
+    </tbody>
+  <% end %>
+</table>
+<div class="genres">
+</div>
