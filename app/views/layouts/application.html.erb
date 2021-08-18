@@ -17,7 +17,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <% if customer_signed_in? %>
             <div class="text-center">
               ようこそ
@@ -48,7 +48,7 @@
                 </li>
               </ul>
             </div>
-          
+
           <% elsif admin_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to '注文履歴一覧', admin_orders_path, class: 'nav-link text-darkt' %>
+                    <%= link_to '注文履歴一覧', admin_root_path, class: 'nav-link text-dark' %>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -74,12 +74,12 @@
                 </li>
                 <li class="nav-item">
                   <div class="social">
-                    <%= link_to 'ログイン', admin_session_path, class: 'nav-link text-darkt' %>
+                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
                   </div>
                 </li>
               </ul>
             </div>
-            
+
           <% else %>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
