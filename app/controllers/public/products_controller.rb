@@ -16,4 +16,5 @@ class Public::ProductsController < ApplicationController
     @genre = Genre.find(params[:id])
     render :index
   end
+  
 end
