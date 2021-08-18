@@ -54,10 +54,10 @@
               <th>会員ステータス</th>
               <th>
                 <div class="field">
-                  <%= f.radio_button :is_deleted, :a %>
+                  <%= f.radio_button :is_deleted, :consent %>
                   <%= f.label :有効 %>
 
-                  <%= f.radio_button :is_deleted, :b %>
+                  <%= f.radio_button :is_deleted, :nonconsent %>
                   <%= f.label :退会 %>
                 </div>
               </th>

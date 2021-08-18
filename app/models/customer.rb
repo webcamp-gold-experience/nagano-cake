@@ -12,6 +12,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, format: { with: /\A\d{10,11}\z/}
 
-  enum is_deleted: { a: true, b: false }
+  enum is_deleted: { consent: true, nonconsent: false }
 
 end

@@ -10,7 +10,7 @@
         <tr><th>住所</th><th><%= @customer.address %></th></tr>
         <tr><th>電話番号</th><th><%= @customer.phone_number %></th></tr>
         <tr><th>メールアドレス</th><th><%= @customer.email %></th></tr>
-        <tr><th>会員ステータス</th><th><%= @customer.is_deleted %></th></tr>
+        <tr><th>会員ステータス</th><th><%= @customer.is_deleted_i18n %></th></tr>
       </table>
        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
        <%= link_to "注文一覧画面を見る", admin_customers_path, class: "btn btn-sm btn-primary" %>
