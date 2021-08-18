@@ -11,9 +11,22 @@
       </div>
       <div class="new-products">
         <h2>新着商品</h2>
-      <div class="products">
-       
-      </div>
+        <div class="d-flex align-content-around flex-wrap">
+           <% @products.each do |product| %>
+            <%= link_to product_path(product) do %>
+              <div class="product-box mr-3">
+                <div class="product-image mb-2">
+                  <%= attachment_image_tag product, :image, :fill, 200, 150, format: 'jpeg' %>
+                </div>
+                <div class="product-detail">
+                  <p><%= product.name %><br>
+                      ¥<%= product.price %> (税込￥<%= product.include_tax.round %>)
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
