@@ -13,4 +13,7 @@ class Customer < ApplicationRecord
   validates :phone_number, format: { with: /\A\d{10,11}\z/}
 
   has_many :products, through: :cart_products
+
+  enum is_deleted: { consent: true, nonconsent: false }
+
 end

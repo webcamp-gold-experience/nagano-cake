@@ -4,3 +4,7 @@ ja:
       sales_status:
         on_sale: "販売中"
         stop_sale: "販売停止中"
+    customer:
+      is_deleted:
+        consent: "有効"
+        nonconsent: "退会"
