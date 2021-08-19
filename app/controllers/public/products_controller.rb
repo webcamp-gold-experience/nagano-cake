@@ -11,10 +11,9 @@ class Public::ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where(" genre_id = ? and sales_status = ? ", params[:id], 0 )
+    @products = Product.where(genre_id: params[:id], sales_status: 0 )
     @genres = Genre.all
     @genre = Genre.find(params[:id])
-    render :index
-    # redirect_back(fallback_location: root_path)
+    redirect_to search_path
   end
 end

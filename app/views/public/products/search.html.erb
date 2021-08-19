@@ -1,2 +1,32 @@
-<h1>Public::Products#search</h1>
-<p>Find me in app/views/public/products/search.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="genre_search col-3 border">
+      <%= render "genre_search", genres: @genres %>
+    </div>
+    <div class="product_list col-9">
+      <% if @genre == nil %>
+        <h2>商品一覧</h2>
+      <% else %>
+        <h2><%= @genre.name %>一覧</h2>
+      <% end %>
+      <h4>(全<%= @products.count %>件)</h4>
+
+      <div class="d-flex align-content-around flex-wrap">
+        <% @products.each do |product| %>
+          <%= link_to product_path(product) do %>
+            <div class="product-box mr-3">
+              <div class="product-image mb-2">
+                <%= attachment_image_tag product, :image, :fill, 200, 150, format: 'jpeg' %>
+              </div>
+              <div class="product-detail">
+                <p><%= product.name %><br>
+                    ¥<%= product.price %> (税込￥<%= product.include_tax.round %>)
+                </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

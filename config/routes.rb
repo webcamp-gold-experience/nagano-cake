@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       delete '/cart_products/destroy_all', to: 'public/cart_products#destroy_all'
 
     resources :products, module: :public, only: [:index, :show]
-      post '/products/search', to: 'public/products#search'
-
+      # post '/products/search', to: 'public/products#search'
+      get '/genres/:id/search', to: 'public/products#search', as: 'genre_searchs'
     resource :customers, module: :public, only: [:edit, :update]
       get '/customers/my_page', to: 'public/customers#show'
       get '/customers/unsubscribe', to: 'public/customers#unsubscribe'
