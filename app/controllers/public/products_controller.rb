@@ -15,5 +15,6 @@ class Public::ProductsController < ApplicationController
     @genres = Genre.all
     @genre = Genre.find(params[:id])
     render :index
+    # redirect_back(fallback_location: root_path)
   end
 end

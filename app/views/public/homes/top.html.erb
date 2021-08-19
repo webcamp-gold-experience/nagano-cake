@@ -1,14 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="genre_search col-3 border">
+      <%= render "public/products/genre_search", genres: @genres %>
+    </div>
+    <div class="col-9">
       <div class="top-comment">
+      </div>
+      
+      <div id="box" >
+        <div class="text">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。<br>
         </p>
+        </div>
+        <div id="images">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+          <div class="image4"></div>
+        </div>
       </div>
+
       <div class="new-products">
         <h2>新着商品</h2>
         <div class="d-flex align-content-around flex-wrap">
@@ -18,9 +33,9 @@
                 <div class="product-image mb-2">
                   <%= attachment_image_tag product, :image, :fill, 200, 150, format: 'jpeg' %>
                 </div>
-                <div class="product-detail">
-                  <p><%= product.name %><br>
-                      ¥<%= product.price %> (税込￥<%= product.include_tax.round %>)
+                <div class="product-detail break-all break-word">
+                  <%= product.name %>
+                  <p>¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
                   </p>
                 </div>
               </div>
@@ -29,5 +44,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="row float-right">
+    <%= link_to "全ての商品を見る 》", products_path %>
   </div>
 </div>
