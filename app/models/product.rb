@@ -8,4 +8,6 @@ class Product < ApplicationRecord
   def include_tax
     self.price*1.10
   end
+
+  has_many :customers, through: :cart_products
 end

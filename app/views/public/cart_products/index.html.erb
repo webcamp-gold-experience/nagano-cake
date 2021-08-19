@@ -3,46 +3,53 @@
   <%= link_to 'カートを空にする', cart_products_destroy_all_path, method: :delete, class: "btn btn-danger" %>
 </div>
 
-<div class="col-md-8 offset-md-1 m-3">
+<div class="col-md-8 offset-md-1">
   <table class="table table-hover table-inverse">
-    <% @cart_products.each do |cart_product| %>
-      <thread>
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </tr>
-        <tbody>
+    <thread>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+      <tbody>
+        <% @sum = 0 %>
+        <% @cart_products.each do |cart_product| %>
           <tr>
             <td>
-              <%= cart_product.name %>
+              <%= cart_product.product.name %>
             </td>
             <td>
-              <%= cart_product.price %>
+              <%= cart_product.product.include_tax.round %>
             </td>
             <td>
-              <%= f.select :amount, options_for_select(@numbers, {selected: cart＿product.amount} ) %>
-              <%= link_to '変更', cart_product_path(cart_product), class: "btn btn-success" %>
+              <%= form_with model: cart_product, url: cart_product_path(cart_product), method: :patch, local: true do |f| %>
+                <%= f.select :amount, @numbers %>
+                <%= f.submit '変更' %>
+              <% end %>
             </td>
             <td>
-              <%= cart_product.price*cart_product.amount %>
+              <%= (cart_product.product.include_tax*cart_product.amount).round %>
+              <% @sum += (cart_product.product.include_tax*cart_product.amount).round %>
             </td>
             <td>
               <%= link_to '削除する', cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
-        </tbody>
-      </thread>
-    <% end %>
+        <% end %>
+      </tbody>
+    </thread>
   </table>
-  
+
   <div class="d-flex justify-content-between m-5">
     <%= link_to '買い物を続ける', products_path, class: "btn btn-info" %>
     <tr>
       <th>合計金額</th>
-      <th></th>
+      <th>￥<%= @sum %></th>
     </tr>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to '情報入力に進む', new_order_path, class: "btn btn-info" %>
   </div>
 </div>
