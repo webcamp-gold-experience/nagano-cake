@@ -6,8 +6,10 @@ class Public::ProductsController < ApplicationController
   end
 
   def show
+    @cart_product = CartProduct.new
     @product = Product.find(params[:id])
     @genres = Genre.all
+    @numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   end
 
   def search
@@ -16,4 +18,5 @@ class Public::ProductsController < ApplicationController
     @genre = Genre.find(params[:id])
     render :index
   end
+
 end
