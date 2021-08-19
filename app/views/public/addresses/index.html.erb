@@ -1,7 +1,7 @@
 <h2>配送先登録/一覧</h2>
 
 <div class="container">
-  <%= form_with model: @address_new, local: true do |f| %>
+  <%= form_with model: @address, local: true do |f| %>
 
   <div class="form-group row md-3">
     <div class="col-sm-2 col-form-label">
@@ -34,4 +34,26 @@
     </div>
   </div>
   <% end %>
+
+  <div class="row">
+    <table class="table table-borderd">
+      <therd>
+        <tr class="table-active">
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th colspan="2"></th>
+        </tr>
+      </therd>
+      <tbody>
+        <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

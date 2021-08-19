@@ -14,6 +14,6 @@ class Customer < ApplicationRecord
 
   enum is_deleted: { consent: true, nonconsent: false }
   
-  
+  has_many :addresses
 
 end
