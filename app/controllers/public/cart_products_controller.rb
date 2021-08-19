@@ -1,18 +1,26 @@
 class Public::CartProductsController < ApplicationController
   def index
     @cart_products = CartProduct.where(customer_id: current_customer.id)
+    @numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   end
 
   def create
     @cart_product = CartProduct.new(cart_product_params)
-    if @cart_product.save
-      redirect_to cart_products_path
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
+    @cart_products.each do |cart_product|
+      if cart_product.product_id = @cart_product.product_id
+        new_amount = cart_product.amount + @cart_product.amount
+        cart_product.update_attribute(:amount, new_amount)
+        @cart_product.delete
+      end
     end
+    @cart_product.save
+    redirect_to cart_products_path
   end
 
   def update
-    @cart_product = CartProduct.find(params[:cart_prodcut_id])
-    if @cart_prodcut.save
+    @cart_product = CartProduct.find(params[:id])
+    if @cart_product.update(cart_product_params)
       redirect_to cart_products_path
     end
   end
@@ -33,6 +41,6 @@ class Public::CartProductsController < ApplicationController
 
   private
   def cart_product_params
-    params.permit(:product_id, :customer_id, :amount).merge(customer_id: current_customer.id)
+    params.require(:cart_product).permit(:product_id, :customer_id, :amount)
   end
 end

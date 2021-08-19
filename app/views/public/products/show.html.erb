@@ -14,7 +14,13 @@
           <h5>¥<%= @product.include_tax.round %></h5>
           <p>(税込)</p>
         </div>
-        <%= link_to 'カートに入れる', create_cart_products_path(@cart_products, product_id: @product.id, customer_id: current_customer.id, amount: 1), method: :post %>
+        <%= form_with model: @cart_product, url: create_cart_products_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.select :amount, @numbers %>
+          <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+        <% end %>
+        <%#= link_to 'カートに入れる', create_cart_products_path(@cart_products, product_id: @product.id, customer_id: current_customer.id, amount: 1), method: :post %>
         <%#= link_to 'カートに入れる', {controller: 'cart_products', action: 'create', product_id: @product.id, customer_id: current_customer.id, amount: 1 }, method: :post %>
       </div>
      </div>

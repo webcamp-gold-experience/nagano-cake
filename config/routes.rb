@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     get '/about', to: 'public/homes#about'
 
     resources :addresses, module: :public, only: [:index, :create, :edit, :update, :destroy]
+    
+      delete '/cart_products/destroy_all', to: 'public/cart_products#destroy_all'
     resources :cart_products, module: :public, only: [:index, :update, :destroy]
       post '/cart_products', to: 'public/cart_products#create',  as: 'create_cart_products'
-      delete '/cart_products/destroy_all', to: 'public/cart_products#destroy_all'
 
     resources :products, module: :public, only: [:index, :show]
       post '/products/search', to: 'public/products#search'
