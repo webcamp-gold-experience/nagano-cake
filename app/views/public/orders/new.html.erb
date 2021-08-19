@@ -2,6 +2,29 @@
   <div class="row mt-5">
     <div class="col-md-8 offset-md-1">
       <h5>注文情報入力</h5>
+      <%= form_with model: @order, method: :post, local: true do |f| %>
+        <div class="form-group">
+          <h6>支払い方法</h6>
+          <%= f.radio_button :payment_method, :credit_card %>
+          <%= f.label 'クレジットカード' %>
+          <br>
+          <%= f.radio_button :payment_method, :bank_transfer %>
+          <%= f.label '銀行振り込み' %>
+        </div>
+        <div class="form-group">
+          <h6>お届け先</h6>
+          <%= f.radio_button :delivery_address, :current_customer_address %>
+            <%= f.label :delivery_address, 'ご自身の住所' %><br>
+              <%= '〒' %>
+              <%= current_customer.postal_code %>
+              <%= current_customer.address %><br>
+          <%= f.radio_button :delivery_address, :addresses_address %>
+            <%= f.label :delivery_address, '登録済みの住所から選択' %><br>
+              <%= f.collection_select :delivery_address, current_customer.addresses, :id, :address, :include_blank => "選択してください" %><br>
+          <%= f.radio_button :delivery_address, :new_address %>
+            <%= f.label :delivery_address, '新しいお届け先' %><br>
+        <%= f.submit '確認画面へ進む' %>
+      <% end %>
     </div>
   </div>
 </div>
