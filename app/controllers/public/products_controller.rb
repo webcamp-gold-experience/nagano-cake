@@ -6,14 +6,16 @@ class Public::ProductsController < ApplicationController
   end
 
   def show
+    @cart_product = CartProduct.new
     @product = Product.find(params[:id])
     @genres = Genre.all
+    @numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   end
 
   def search
-    @products = Product.where(genre_id: params[:id], sales_status: 0 )
+    @products = Product.where(genre_id: params[:id], sales_status: 0)
     @genres = Genre.all
     @genre = Genre.find(params[:id])
-    redirect_to search_path
   end
+
 end

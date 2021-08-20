@@ -4,11 +4,7 @@
       <%= render "genre_search", genres: @genres %>
     </div>
     <div class="product_list col-9">
-      <% if @genre == nil %>
-        <h2>商品一覧</h2>
-      <% else %>
-        <h2><%= @genre.name %>一覧</h2>
-      <% end %>
+      <h2><%= @genre.name %>一覧</h2>
       <h4>(全<%= @products.count %>件)</h4>
 
       <div class="d-flex align-content-around flex-wrap">

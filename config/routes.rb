@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     get '/about', to: 'public/homes#about'
 
     resources :addresses, module: :public, only: [:index, :create, :edit, :update, :destroy]
-    resources :cart_products, module: :public, only: [:index, :create, :update, :destroy]
+
       delete '/cart_products/destroy_all', to: 'public/cart_products#destroy_all'
+    resources :cart_products, module: :public, only: [:index, :update, :destroy]
+      post '/cart_products', to: 'public/cart_products#create',  as: 'create_cart_products'
 
     resources :products, module: :public, only: [:index, :show]
-      # post '/products/search', to: 'public/products#search'
-      get '/genres/:id/search', to: 'public/products#search', as: 'genre_searchs'
+      get '/products/:id/search', to: 'public/products#search' , as: 'genre_searches'
+
     resource :customers, module: :public, only: [:edit, :update]
       get '/customers/my_page', to: 'public/customers#show'
       get '/customers/unsubscribe', to: 'public/customers#unsubscribe'
