@@ -1,29 +1,29 @@
+
+    <!--<div class="genre_search col-2 border">-->
+      <%#= render "public/products/genre_search", genres: @genres %>
+    <!--</div>-->
+<div id="box" >
+  <div class="box-text">
+  <h1 class = "welcome-coment">
+    ながのCAKE
+  </h1>
+  <p class = "shop-comment">
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。<br>
+  </p>
+  </div>
+  <div id="images">
+    <div class="image1"></div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+    <div class="image4"></div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="genre_search col-3 border">
-      <%= render "public/products/genre_search", genres: @genres %>
-    </div>
-    <div class="col-9">
-      <div class="top-comment">
-      </div>
-
-      <div id="box" >
-        <div class="text text-center">
-        <p class = "h3">
-          ようこそ、ながのCAKEへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。<br>
-        </p>
-        </div>
-        <div id="images">
-          <div class="image1"></div>
-          <div class="image2"></div>
-          <div class="image3"></div>
-          <div class="image4"></div>
-        </div>
-      </div>
-
+    <div class="col">
       <div class="new-products">
         <h2>新着商品</h2>
         <div class="d-flex align-content-around flex-wrap">
@@ -49,3 +49,4 @@
     <%= link_to "全ての商品を見る 》", products_path %>
   </div>
 </div>
+
