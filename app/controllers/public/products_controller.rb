@@ -1,6 +1,6 @@
 class Public::ProductsController < ApplicationController
   def index
-    @products = Product.where(sales_status:0)
+    @products = Product.where(sales_status:0).page(params[:page]).per(4)
     @genres = Genre.all
 
   end

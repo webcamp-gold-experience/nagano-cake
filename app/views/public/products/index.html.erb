@@ -6,7 +6,7 @@
     <div class="product_list col-9">
       <h2>商品一覧</h2>
       <h4>(全<%= @products.count %>件)</h4>
-      
+
       <div class="d-flex align-content-around flex-wrap">
         <% @products.each do |product| %>
           <%= link_to product_path(product) do %>
@@ -23,6 +23,7 @@
           <% end %>
         <% end %>
       </div>
+      <%= paginate @products %>
     </div>
   </div>
 </div>
