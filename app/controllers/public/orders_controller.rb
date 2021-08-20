@@ -3,12 +3,20 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
   end
 
   def confirm
+    @order = Order.new(order_params)
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
+    if @order.invalid?
+     render :new
+    end
   end
 
   def create
+    Order.create!(order_params)
+    render :thanks
   end
 
   def thanks
