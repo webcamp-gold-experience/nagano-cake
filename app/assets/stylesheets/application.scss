@@ -14,28 +14,32 @@
  *= require_self
  */
 @import "bootstrap";
-
+a{
+  text-decoration: none;
+  color: black;
+}
 // トップ画面
 #box{
   height: 600px;
   position: relative;
   width: 100%;
+  min-height: 100vh;
   color: white;
   .box-text {
     position: absolute;
-    top: 40%;
-    left: 33%;
+    top: 35%;
+    left: 30%;
     z-index: 9999;
 
     h1{
       font-family: 'Hannotate TC',sans-serif;
       text-align: center;
-      font-size: 70px;
+      font-size: 7vw;
     }
     p{
-      font-family: 'Hannotate TC',sans-serif;
+      // font-family: 'Hannotate TC',sans-serif;
       text-align: center;
-      font-size: 20px;
+      font-size: 1.8vw;
     }
   }
   #images{
@@ -58,6 +62,22 @@
   }
 }
 
+.product-box{
+  border: 1px solid #f0f0f0;
+  transition: 0.5s;
+}
+.product-box:hover{
+ opacity: 0.6;
+ color: black;
+}
+// ジャンル検索
+.product-detail, .genre_search{
+  font-family: 'Hannotate TC',sans-serif;
+}
+.test:hover{
+  color: black;
+  text-decoration: none;
+}
 // アバウト画面
 #aboutbox{
   height: 500px;
@@ -72,10 +92,11 @@
 
     h1{
       font-family: 'Hannotate TC',sans-serif;
-      font-size: 50px;
+      font-size: 5vw;
     }
     p{
-      font-size: 20px;
+      font-size: 1.7vw;
+      line-height: 200%;
     }
   }
 }
