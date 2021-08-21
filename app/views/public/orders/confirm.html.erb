@@ -60,19 +60,19 @@
       </div>
       <div>
         <p>お届け先</p>
-        <%= @order.delivary_postal_code %>
-        <%= @order.delivary_address %>
-        <%= @order.delivary_name %>
+        <%= @order.delivery_postal_code %>
+        <%= @order.delivery_address %>
+        <%= @order.delivery_name %>
       </div>
       <%= form_with model: @order, method: :post, local:true do |f| %>
-        <%= f.hidden_field :customer_id, value: current_customer.id %>
-        <%= f.hidden_field :delivary_postal_code, value: @order.delivary_postal_code %>
-        <%= f.hidden_field :delivary_address, value: @order.delivary_address %>
-        <%= f.hidden_field :delivary_name, value: @order.delivary_name %>
-        <%= f.hidden_field :delivary_fee, value: 800 %>
-        <%= f.hidden_field :total_payment, value: @sum %>
-        <%= f.hidden_field :order_status, value: 0 %>
-        <%= f.hidden_field :payment_method, value: @order.payment_method %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+        <%= f.hidden_field :delivery_address, :value => @order.delivery_address %>
+        <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
+        <%= f.hidden_field :delivery_fee, :value => 800 %>
+        <%= f.hidden_field :total_payment, :value => @sum+800 %>
+        <%= f.hidden_field :order_status, :value => 0 %>
+        <%= f.hidden_field :payment_method, :value => @order.payment_method %>
         <%= f.submit '注文を確定する' %>
       <% end %>
     </div>

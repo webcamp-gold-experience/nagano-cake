@@ -8,7 +8,7 @@ class Public::CartProductsController < ApplicationController
     @cart_product = CartProduct.new(cart_product_params)
     @cart_products = CartProduct.where(customer_id: current_customer.id)
     @cart_products.each do |cart_product|
-      if cart_product.product_id = @cart_product.product_id
+      if cart_product.product_id == @cart_product.product_id
         new_amount = cart_product.amount + @cart_product.amount
         cart_product.update_attribute(:amount, new_amount)
         @cart_product.delete
