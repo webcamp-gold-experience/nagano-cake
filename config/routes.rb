@@ -10,10 +10,16 @@ Rails.application.routes.draw do
       post '/cart_products', to: 'public/cart_products#create',  as: 'create_cart_products'
 
     resources :products, module: :public, only: [:index, :show]
+<<<<<<< HEAD
       post '/products/search', to: 'public/products#search'
       
       patch '/customers/withdraw', to: 'public/customers#withdraw'
     resources :customers, module: :public, only: [:edit, :update]
+=======
+      get '/products/:id/search', to: 'public/products#search' , as: 'genre_searches'
+
+    resource :customers, module: :public, only: [:edit, :update]
+>>>>>>> origin/develop
       get '/customers/my_page', to: 'public/customers#show'
       get '/customers/unsubscribe', to: 'public/customers#unsubscribe'
 
