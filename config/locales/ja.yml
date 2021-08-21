@@ -8,3 +8,7 @@ ja:
       is_deleted:
         consent: "有効"
         nonconsent: "退会"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        bank_transfer: "銀行振り込み"
