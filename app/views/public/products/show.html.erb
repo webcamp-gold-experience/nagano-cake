@@ -1,25 +1,30 @@
-<div class="container">
+<div class="container-fluid">
+   <div class="product-title">
+    <h2>商品詳細</h2>
+  </div>
   <div class="row mt-5">
-    <div class="genre_search col-3">
+    <div class="genre_search col-lg-2 col-sm-3">
      <%= render "genre_search", genres: @genres %>
     </div>
-    <div class="produc-box col-9 d-flex flex-row">
-      <div class="product-image mr-5">
+    <div class="product-show col-lg-10 col-sm-9 d-flex flex-row">
+      <div class="product-show-img">
         <%= attachment_image_tag @product, :image, :fill, 250, 200, format: 'jpeg' %>
       </div>
-      <div class="product-detail mt-2">
-        <h4><strong><%= @product.name %></h4></strong>
-        <p><%= @product.introduction %></p>
-        <div class="price d-flex flex-row mt-6">
-          <h5>¥<%= @product.include_tax.round %></h5>
-          <p>(税込)</p>
+      <div class="product-show-detail">
+        <p class="product-name"><%= @product.name %></p>
+        <p class="product-introduction"><%= @product.introduction %></p>
+        <div class="d-flex flex-row mt-6">
+          <p class="product-price">¥<%= @product.include_tax.round %></p>
+          <p class="product-price">(税込)</p>
         </div>
+        <div class="cart-button">
         <%= form_with model: @cart_product, url: create_cart_products_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.select :amount, @numbers %>
-          <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+          <%= f.submit 'カートに入れる', class:"cart-btn" %>
         <% end %>
+        </div>
         <%#= link_to 'カートに入れる', create_cart_products_path(@cart_products, product_id: @product.id, customer_id: current_customer.id, amount: 1), method: :post %>
         <%#= link_to 'カートに入れる', {controller: 'cart_products', action: 'create', product_id: @product.id, customer_id: current_customer.id, amount: 1 }, method: :post %>
       </div>

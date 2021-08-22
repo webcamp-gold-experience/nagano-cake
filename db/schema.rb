@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_08_17_002406) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "custmer_id", null: false
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "product_id", null: false
-    t.integer "customer_id", null: false
+    t.integer "custmer_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "phone_number", null: false
-    t.boolean "is_deleted", default: true, null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "postal_code"
+    t.string "address"
+    t.string "phone_number"
+    t.boolean "is_deleted", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -72,20 +72,20 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
     t.integer "product_id", null: false
     t.integer "tax_price", null: false
     t.integer "amount", null: false
-    t.integer "production_status", default: 0, null: false
+    t.integer "production_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "delivery_postal_code", null: false
-    t.string "delivery_address", null: false
-    t.string "delivery_name", null: false
-    t.integer "delivery_fee", null: false
+    t.integer "custmer_id", null: false
+    t.string "delivary_postal_code", null: false
+    t.string "delivary_address", null: false
+    t.string "delivary_name", null: false
+    t.integer "delivary_fee", null: false
     t.integer "total_payment", null: false
-    t.integer "order_status", default: 0, null: false
-    t.integer "payment_method", default: 0, null: false
+    t.integer "order_status", null: false
+    t.integer "payment_method", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

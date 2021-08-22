@@ -22,23 +22,29 @@
 </div>
 
 <div class="container-fluid mt-5">
+  <div class="product-title">
+    <h2>新着商品</h2>
+  </div>
   <div class="row">
-     <div class="genre_search col-3">
+     <div class="genre_search col-lg-2 col-sm-3">
       <%= render "public/products/genre_search", genres: @genres %>
      </div>
-    <div class="col-9">
+    <div class="col-lg-10 col-sm-9">
       <div class="new-products">
-        <h2>新着商品</h2>
         <div class="d-flex align-content-around flex-wrap">
            <% @products.each do |product| %>
-              <div class="product-box mr-3 mb-4 border p-3">
+              <div class="product-box mr-5 ml-5 mb-5">
             <%= link_to product_path(product), class:"test" do %>
                 <div class="product-image mb-2">
-                  <%= attachment_image_tag product, :image, :fill, 200, 150, format: 'jpeg' %>
+                  <%= attachment_image_tag product, :image, :fill, 250, 200, format: 'jpeg' %>
                 </div>
-                <div class="product-detail break-all break-word text-center">
-                  <%= product.name %>
-                  <p>¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
+                <div class="product-detail break-all break-word">
+                  <p class="name  text-center pb-2">
+                    <%= product.name %>
+                  </p>
+                  <p class="price">¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
+                  <p class="introduction">
+                    <%= product.introduction %>
                   </p>
                 </div>
             <% end %>

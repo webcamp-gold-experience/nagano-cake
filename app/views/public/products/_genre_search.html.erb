@@ -1,14 +1,14 @@
 <table class="table genre-table">
   <thead>
     <tr>
-       <th class="border-white h4 genre-search"> ジャンル検索</th>
+       <th class="border-white h5 text-nowrap genre-search"> ジャンル検索</th>
     </tr>
   </thead>
   <% @genres.each do |genre| %>
     <tbody>
       <tr>
         <td>
-          <%= link_to genre.name, genre_searches_path(genre.id) %>
+          <%= link_to genre.name, genre_searches_path(genre.id), class:"text-nowrap" %>
         </td>
        </tr>
     </tbody>
