@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "delivery_postal_code", null: false
-    t.string "delivery_addressdelivery_name", null: false
+    t.string "delivery_address", null: false
     t.string "delivery_name", null: false
     t.integer "delivery_fee", null: false
     t.integer "total_payment", null: false
