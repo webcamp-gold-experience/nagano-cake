@@ -10,4 +10,7 @@ class Product < ApplicationRecord
   end
 
   has_many :customers, through: :cart_products
+
+  has_many :orders, hrough: :order_products
+  
 end

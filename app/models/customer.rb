@@ -21,5 +21,6 @@ class Customer < ApplicationRecord
   end
 
   has_many :addresses
-
+  
+ 
 end
