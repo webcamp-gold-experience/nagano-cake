@@ -10,7 +10,12 @@ class Product < ApplicationRecord
   end
 
   has_many :customers, through: :cart_products
+<<<<<<< HEAD
 
   has_many :orders, hrough: :order_products
   
+=======
+  has_many :order_products
+  has_many :orders, through: :order_products
+>>>>>>> origin/develop
 end
