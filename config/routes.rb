@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     resources :cart_products, module: :public, only: [:index, :update, :destroy]
       post '/cart_products', to: 'public/cart_products#create',  as: 'create_cart_products'
 
+      get '/products/search_all', to: 'public/products#search_all' , as: 'search_all'
     resources :products, module: :public, only: [:index, :show]
       get '/products/:id/search', to: 'public/products#search' , as: 'genre_searches'
-
       patch '/customers/withdraw', to: 'public/customers#withdraw'
     resources :customers, module: :public, only: [:edit, :update]
       get '/customers/my_page', to: 'public/customers#show'

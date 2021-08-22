@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="search-message text-center mt-5 mb-5">
+    <% if @word == "" %>
+     <h2>全商品一覧</h2>
+     <h4>(全<%= @products.count %>件)</h4>
+    <% elsif @genre.present? %>
+      <h2><%= @word %>一覧</h2>
+      <h4>(全<%= @products.count %>件)</h4>
+    <% elsif @products.present? %>
+      <h2>検索結果</h2>
+      <h4>(全<%= @products.count %>件)</h4>
+    <% else %>
+      <h2>検索結果はありません。</h2>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="genre_search col-3 border">
+      <%= render "genre_search", genres: @genres %>
+    </div>
+    <div class="product_list col-9">
+
+      <div class="d-flex align-content-around flex-wrap">
+        <% @products.each do |product| %>
+          <%= link_to product_path(product) do %>
+            <div class="product-box mr-3">
+              <div class="product-image mb-2">
+                <%= attachment_image_tag product, :image, :fill, 200, 150, format: 'jpeg' %>
+              </div>
+              <div class="product-detail">
+                <p><%= product.name %><br>
+                    ¥<%= product.price %> (税込￥<%= product.include_tax.round %>)
+                </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
