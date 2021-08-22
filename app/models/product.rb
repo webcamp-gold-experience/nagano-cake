@@ -1,4 +1,9 @@
 class Product < ApplicationRecord
+  validates :name, {presence: true}
+  validates :introduction, {presence: true}
+  validates :image_id, {presence: true}
+  validates :price, {presence: true}
+  validates :sale_status, {presence: true}
 
   enum sales_status: {on_sale: 0, stop_sale: 1}
 
