@@ -1,2 +1,80 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8 offset-md-1">
+      <h5>注文情報確認</h5>
+      <table class="table table-hover table-inverse">
+        <thread>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <tbody>
+            <% @sum = 0 %>
+            <% @cart_products.each do |cart_product| %>
+              <tr>
+                <td>
+                  <%= cart_product.product.name %>
+                </td>
+                <td>
+                  <%= cart_product.product.include_tax.round %>
+                </td>
+                <td>
+                  <%= cart_product.amount %>
+                </td>
+                <td>
+                  <%= (cart_product.product.include_tax*cart_product.amount).round %>
+                  <% @sum += (cart_product.product.include_tax*cart_product.amount).round %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </thread>
+      </table>
+      <table class="table table-hover table-inverse">
+        <thread>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr>
+            <td>送料</td>
+            <td>￥800</td>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <td>￥<%= @sum %></td>
+          </tr>
+          <tr>
+            <td>請求金額</td>
+            <td>￥<%= @sum+800 %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <p>支払い方法</p>
+        <%= @order.payment_method_i18n %>
+      </div>
+      <div>
+        <p>お届け先</p>
+        <%= @order.delivery_postal_code %>
+        <%= @order.delivery_address %>
+        <%= @order.delivery_name %>
+      </div>
+      <%= form_with model: @order, method: :post, local:true do |f| %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+        <%= f.hidden_field :delivery_address, :value => @order.delivery_address %>
+        <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
+        <%= f.hidden_field :delivery_fee, :value => 800 %>
+        <%= f.hidden_field :total_payment, :value => @sum+800 %>
+        <%= f.hidden_field :order_status, :value => 0 %>
+        <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+        <%= f.submit '注文を確定する' %>
+      <% end %>
+    </div>
+  </div>
+</div>

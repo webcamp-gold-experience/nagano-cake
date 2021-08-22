@@ -14,8 +14,12 @@ class Customer < ApplicationRecord
 
   has_many :products, through: :cart_products
 
-  enum is_deleted: { consent: true, nonconsent: false }
-  
+  enum is_deleted: { consent: false, nonconsent: true }
+
+  def active_for_authentication?
+    super && self.is_deleted == "consent"
+  end
+
   has_many :addresses
 
 end
