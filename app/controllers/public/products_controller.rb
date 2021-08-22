@@ -18,4 +18,24 @@ class Public::ProductsController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
+  def search_all
+
+    @word = params[:word]
+    @genre = Genre.where(name: @word)
+    if @word == ""
+      @products = Product.all
+      @genres = Genre.all
+    elsif @genre.present?
+      @genres = Genre.all
+      @products = Product.where(genre_id: @genre.ids)
+    else
+      @products = []
+      @word.split(/[[:blank:]]+/).each do |keyword|
+      next if keyword == ""
+      @products += Product.where('name LIKE ?', "%#{keyword}%")
+      end
+      @products.uniq!
+      @genres = Genre.all
+    end
+  end
 end

@@ -48,6 +48,12 @@
                 </li>
               </ul>
             </div>
+            <div class="search">
+              <%= form_with url:  search_all_path, method: :get, local: :true do |f| %>
+              <%= f.text_field :word %>
+              <%= f.submit "検索" %>
+              <% end %>
+            </div>
 
           <% elsif admin_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">

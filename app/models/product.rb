@@ -5,11 +5,16 @@ class Product < ApplicationRecord
   attachment :image
   belongs_to :genre
 
-  def include_tax
-    self.price*1.10
-  end
-
   has_many :customers, through: :cart_products
   has_many :order_products
   has_many :orders, through: :order_products
+  
+  
+  def include_tax
+    self.price*1.10
+  end
+  
+  def self.looks(words)
+    @products = Product.where("name LIKE ?", "%#{words}%")
+  end
 end
