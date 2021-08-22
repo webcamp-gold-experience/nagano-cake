@@ -73,13 +73,20 @@ a{
 
 .new-products{
   .product-box{
-    // border: 1px solid #f0f0f0;
-    transition: 0.5s;
-    margin: 40px;
+    // transition: 0.5s;
+    // margin: 40px;
+  opacity : 0.1;
+	transform : translate(0, 130px);
+	transition : all 1200ms;
+
+  }
+  .product-box.scrollin{
+  opacity : 1;
+	transform : translate(0, 0);
   }
   .product-box:hover{
-   opacity: 0.6;
-   color: black;
+  opacity: 0.6;
+  color: black;
   }
   .name{
     font-family: 'Hannotate TC',sans-serif;
@@ -143,7 +150,7 @@ a{
     border: solid 5px #696969;
   }
   img:hover{
-    border: solid 5px #dcdcdc;
+   
   }
 }
 .product-show-detail{

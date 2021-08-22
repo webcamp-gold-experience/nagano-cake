@@ -43,3 +43,15 @@ $(document).ready(function () {
   });
 });
 
+$(function(){
+	$(window).scroll(function (){
+		$('.product-box').each(function(){
+			var elemPos = $(this).offset().top;
+			var scroll = $(window).scrollTop();
+			var windowHeight = $(window).height();
+			if (scroll > elemPos - windowHeight){
+				$(this).addClass('scrollin');
+			}
+		});
+	});
+});
