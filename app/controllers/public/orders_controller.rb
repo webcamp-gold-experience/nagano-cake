@@ -30,10 +30,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    if Order.create!(order_params)
-    render :thanks
-    cart_products = CartProduct.where(customer_id: current_customer.id)
-    cart_products.destroy_all
+    @cart_products = CartProduct.where(customer_id: current_customer.id)
+    if @order = Order.create!(order_params)
+      @cart_products.each do |cart_product|
+        OrderProduct.create!(
+          order_id: @order.id,
+          product_id: cart_product.product_id,
+          tax_price: cart_product.product.include_tax,
+          amount: cart_product.amount,
+          production_status: 0
+        )
+      end
+      render :thanks
+      cart_products = CartProduct.where(customer_id: current_customer.id)
+      cart_products.destroy_all
     end
   end
 
@@ -41,9 +51,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = OrderProduct.where(order_id: params[:id])
   end
 
   def authenticate_customer
