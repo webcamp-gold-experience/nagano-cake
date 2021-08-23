@@ -11,7 +11,6 @@ class Order < ApplicationRecord
     delivered: 4
   }
 
-
   has_many :order_products
   has_many :products, through: :order_products
 
