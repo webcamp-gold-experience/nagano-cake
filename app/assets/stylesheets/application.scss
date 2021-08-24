@@ -16,13 +16,11 @@
 @import "bootstrap";
 a, p, th, td, h1, h2, h3, h4, h5{
   //text-decoration: none;
-  color: #946c45;
+  color: #696969;
   font-weight: normal;
 }
 
 // ヘッダー
-
-
 /*==================================================
 　5-3-1 中心から外に線が伸びる（下部）
 ===================================*/
@@ -64,11 +62,12 @@ a, p, th, td, h1, h2, h3, h4, h5{
   color: #665a1a;
   font-weight: lighter;
 }
+
 //ボディ
 body {
   animation-name: fadeInAnime;
   animation-fill-mode:backwards;
-  animation-duration:3s;
+  animation-duration:2s;
   animation-timing-function:ease;
   animation-delay: 0.5s;
   animation-direction:normal;
@@ -84,7 +83,6 @@ body {
   }
 }
 // トップ画面
-
 .product-title{
   //font-family: 'Hannotate TC',sans-serif;
   text-align: center;
@@ -248,5 +246,25 @@ body {
   }
 }
 
+// サンクスページ
+.TextTyping {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5rem;
+  letter-spacing: .5em;
+    word-break : break-all;
+}
+.TextTyping span {
+  display: none;
+}
 
+/*文字列後ろの線の設定*/
+.TextTyping::after {
+  content: "|";
+  animation: typinganime .8s ease infinite;
+}
 
+@keyframes typinganime{
+  from{opacity:0}
+  to{opacity:1}
+}
