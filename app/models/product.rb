@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  require 'miyabi'
 
   enum sales_status: {on_sale: 0, stop_sale: 1}
 
@@ -9,13 +10,13 @@ class Product < ApplicationRecord
   
   has_many :order_products
   has_many :orders, through: :order_products
-  
-  
+
+
   def include_tax
     self.price*1.10
   end
-  
+
   def self.looks(words)
-    @products = Product.where("name LIKE ?", "%#{words}%")
+    @products = Product.where("conversion_name LIKE ?", "%#{words}%")
   end
 end
