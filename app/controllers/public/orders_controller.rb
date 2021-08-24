@@ -24,9 +24,7 @@ class Public::OrdersController < ApplicationController
       @order.delivery_name = params[:order][:delivery_name]
     end
 
-    if @order.invalid?
-     render :new
-    end
+
   end
 
   def create

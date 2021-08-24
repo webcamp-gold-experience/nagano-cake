@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   has_many :products, through: :cart_products
 
   enum is_deleted: { consent: true, nonconsent: false }
-  
-  has_many :addresses
 
+  has_many :addresses
+  has_many :orders
 end
