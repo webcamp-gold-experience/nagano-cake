@@ -21,6 +21,7 @@ class Customer < ApplicationRecord
   end
 
   has_many :addresses
+  has_many :orders
   
   def self.looks(word)
     @customers = []

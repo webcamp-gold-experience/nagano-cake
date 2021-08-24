@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       root to: 'homes#top'
       get 'search', to: 'homes#search' , as: 'search'
       resources :orders, only: [:show, :update] do
-        patch '/order_details/:id', to: 'order_details#update'
+        patch '/order_details/:id', to: 'order_details#update', as: 'details'
       end
 
       resources :genres, only: [:index, :create, :edit, :update, :destroy]
