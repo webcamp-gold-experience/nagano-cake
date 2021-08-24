@@ -42,14 +42,16 @@ class Admin::HomesController < ApplicationController
       end
 
     elsif @range == "ジャンル"
-         @genre = []
-         @genre = Genre.where(name: @word)
-
       if @word == ""
         @products = Product.all
-      elsif @genre.present?
-        @products = Product.where('genre_id LIKE ?', @genre.ids)
-      end
+      else
+        @products = []
+        @word.split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        @products << Genre.find_by(name: keyword).products
+        end
+        @products.flatten!
+      end 
     end
 
   end

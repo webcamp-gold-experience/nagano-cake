@@ -23,27 +23,17 @@ class Public::ProductsController < ApplicationController
     @genres = Genre.all
     @word = params[:word]
 
-
-
-    @genre = []
-    @word.split(/[[:blank:]]+/).each do |keyword|
-    next if keyword == ""
-    @genre += Genre.where('name LIKE ?', "#{keyword}")
-    end
-
     if @word == ""
       @products = Product.all
 
-    elsif @genre.present?
-      @genre.each do |genre|
-      @products = Product.where('genre_id LIKE ?', genre.id)
+    elsif
+
+      @products = []
+      @word.split(/[[:blank:]]+/).each do |keyword|
+      next if keyword == ""
+      @products << Genre.find_by(name: keyword).products
       end
-      # @products = []
-      # @word.split(/[[:blank:]]+/).each do |keyword|
-      # @genre = Genre.where('name LIKE ?', "#{keyword}")
-      # @genre.each do |genre|
-      # end
-      # end
+      @products.flatten!
 
     else
 
