@@ -38,19 +38,19 @@ a, p, th, td, h1, h2, h3, h4, h5{
 }
 
 .nav-link::after {
-    content: '';
-    /*絶対配置で線の位置を決める*/
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    /*線の形状*/
-    width: 80%;
-    height: 2px;
-    background: #666c67;
-    /*アニメーションの指定*/
-    transition: all .3s;
-    transform: scale(0, 1);/*X方向0、Y方向1*/
-    transform-origin: center top;/*上部中央基点*/
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  /*線の形状*/
+  width: 80%;
+  height: 2px;
+  background: #666c67;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0, 1);/*X方向0、Y方向1*/
+  transform-origin: center top;/*上部中央基点*/
 }
 
 /*現在地とhoverの設定*/
@@ -66,15 +66,14 @@ a, p, th, td, h1, h2, h3, h4, h5{
 }
 //ボディ
 body {
-animation-name: fadeInAnime;/*1で解説*/
-animation-fill-mode:backwards;/*2で解説*/
-animation-duration:3s;/*3で解説*/
-animation-timing-function:ease;/*5で解説*/
-animation-delay: 0.5s;/*6で解説*/
-animation-direction:normal;/*7で解説*/
-}
+  animation-name: fadeInAnime;
+  animation-fill-mode:backwards;
+  animation-duration:3s;
+  animation-timing-function:ease;
+  animation-delay: 0.5s;
+  animation-direction:normal;
+  }
 
-/*1で解説*/
 @keyframes fadeInAnime{
   0% {
     opacity: 0;
@@ -87,11 +86,11 @@ animation-direction:normal;/*7で解説*/
 // トップ画面
 
 .product-title{
-    //font-family: 'Hannotate TC',sans-serif;
-    text-align: center;
-    margin-bottom: 60px;
-    margin-top: 50px;
-    // border-bottom: double #FAEBD7;
+  //font-family: 'Hannotate TC',sans-serif;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  // border-bottom: double #FAEBD7;
 }
 
 #box{
