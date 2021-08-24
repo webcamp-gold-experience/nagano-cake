@@ -20,22 +20,45 @@ class Public::ProductsController < ApplicationController
 
   def search_all
 
+    @genres = Genre.all
     @word = params[:word]
-    @genre = Genre.where(name: @word)
+
+
+
+    @genre = []
+    @word.split(/[[:blank:]]+/).each do |keyword|
+    next if keyword == ""
+    @genre += Genre.where('name LIKE ?', "#{keyword}")
+    end
+
     if @word == ""
       @products = Product.all
-      @genres = Genre.all
+
     elsif @genre.present?
-      @genres = Genre.all
-      @products = Product.where(genre_id: @genre.ids)
+      @genre.each do |genre|
+      @products = Product.where('genre_id LIKE ?', genre.id)
+      end
+      # @products = []
+      # @word.split(/[[:blank:]]+/).each do |keyword|
+      # @genre = Genre.where('name LIKE ?', "#{keyword}")
+      # @genre.each do |genre|
+      # end
+      # end
+
     else
+
       @products = []
       @word.split(/[[:blank:]]+/).each do |keyword|
       next if keyword == ""
-      @products += Product.where('name LIKE ?', "%#{keyword}%")
+        if keyword.match(/[一-龠々]/)
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword.to_kanhira.to_roman}%")
+        elsif keyword.is_hira? || keyword.is_kana?
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword.to_roman}%")
+        else
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword}%")
+        end
       end
       @products.uniq!
-      @genres = Genre.all
     end
   end
 end

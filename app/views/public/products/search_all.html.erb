@@ -4,10 +4,10 @@
      <h2>全商品一覧</h2>
      <h4>(全<%= @products.count %>件)</h4>
     <% elsif @genre.present? %>
-      <h2><%= @word %>一覧</h2>
+      <h2><%= @word %>検索結果</h2>
       <h4>(全<%= @products.count %>件)</h4>
     <% elsif @products.present? %>
-      <h2>検索結果</h2>
+      <h2><%= @word %>での検索結果</h2>
       <h4>(全<%= @products.count %>件)</h4>
     <% else %>
       <h2>検索結果はありません。</h2>

@@ -85,7 +85,11 @@
                 </li>
               </ul>
             </div>
-
+            <%= form_with url: admin_search_path, method: :get, local: :true do |f| %>
+              <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
+              <%= f.text_field :word %>
+              <%= f.submit "検索" %>
+             <% end %>
           <% else %>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">

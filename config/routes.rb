@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root to: 'homes#top'
+      get 'search', to: 'homes#search' , as: 'search'
       resources :orders, only: [:show, :update] do
         patch '/order_details/:id', to: 'order_details#update'
       end
