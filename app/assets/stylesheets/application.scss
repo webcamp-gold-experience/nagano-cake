@@ -92,6 +92,7 @@ a{
     font-family: 'Hannotate TC',sans-serif;
     text-size: 100px;
     border-bottom: 1px #DEB887;
+    text-overflow: ellipsis;
 
   }
   .price{
@@ -101,6 +102,7 @@ a{
   .introduction{
    font-family: "MS Pゴシック";
    text-size: 30px;
+   text-overflow: ellipsis;
   }
 }
 // ジャンル検索
@@ -150,7 +152,7 @@ a{
     border: solid 5px #696969;
   }
   img:hover{
-   
+
   }
 }
 .product-show-detail{
