@@ -22,16 +22,20 @@ class Public::ProductsController < ApplicationController
 
     @genres = Genre.all
     @word = params[:word]
+     @genre = []
+      @word.split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        @genre += Genre.where(name: keyword)
+      end
 
     if @word == ""
       @products = Product.all
 
     elsif
-
+      @genre.present?
       @products = []
-      @word.split(/[[:blank:]]+/).each do |keyword|
-      next if keyword == ""
-      @products << Genre.find_by(name: keyword).products
+      @genre.each do |genre|
+      @products << genre.products
       end
       @products.flatten!
 
@@ -51,4 +55,5 @@ class Public::ProductsController < ApplicationController
       @products.uniq!
     end
   end
+
 end
