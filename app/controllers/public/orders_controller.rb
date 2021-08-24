@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
           product_id: cart_product.product_id,
           tax_price: cart_product.product.include_tax,
           amount: cart_product.amount,
-          production_status: 0
+          production_status: :no_start
         )
       end
       render :thanks
