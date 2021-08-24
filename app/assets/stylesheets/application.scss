@@ -14,19 +14,85 @@
  *= require_self
  */
 @import "bootstrap";
-a{
-  text-decoration: none;
-  color: black;
+a, p, th, td, h1, h2, h3, h4, h5{
+  //text-decoration: none;
+  color: #946c45;
+  font-weight: normal;
+}
+
+// ヘッダー
+
+
+/*==================================================
+　5-3-1 中心から外に線が伸びる（下部）
+===================================*/
+
+.nav-link{
+    /*線の基点とするためrelativeを指定*/
+  position: relative;
+}
+
+.nav-link.current,
+.nav-link:hover{
+  color:#0481A2;
+}
+
+.nav-link::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    /*線の形状*/
+    width: 80%;
+    height: 2px;
+    background: #666c67;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: center top;/*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.nav-link.current::after,
+.nav-link:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+.about-comment {
+  color: #665a1a;
+  font-weight: lighter;
+}
+//ボディ
+body {
+animation-name: fadeInAnime;/*1で解説*/
+animation-fill-mode:backwards;/*2で解説*/
+animation-duration:3s;/*3で解説*/
+animation-timing-function:ease;/*5で解説*/
+animation-delay: 0.5s;/*6で解説*/
+animation-direction:normal;/*7で解説*/
+}
+
+/*1で解説*/
+@keyframes fadeInAnime{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 // トップ画面
 
 .product-title{
-     font-family: 'Hannotate TC',sans-serif;
-     text-align: center;
-     margin-bottom: 60px;
-     margin-top: 50px;
+    //font-family: 'Hannotate TC',sans-serif;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 50px;
     // border-bottom: double #FAEBD7;
-  }
+}
 
 #box{
   height: 600px;
@@ -41,7 +107,7 @@ a{
     z-index: 9999;
 
     h1{
-      font-family: 'Hannotate TC',sans-serif;
+      //font-family: 'Hannotate TC',sans-serif;
       text-align: center;
       font-size: 7vw;
     }
@@ -78,32 +144,34 @@ a{
     margin: 40px;
   }
   .product-box:hover{
-   opacity: 0.6;
-   color: black;
+    opacity: 0.6;
+    color: black;
   }
   .name{
-    font-family: 'Hannotate TC',sans-serif;
+    //font-family: 'Hannotate TC',sans-serif;
     text-size: 100px;
     border-bottom: 1px #DEB887;
 
   }
   .price{
-    font-family: 'Hannotate TC',sans-serif;
+    //font-family: 'Hannotate TC',sans-serif;
     text-size: 50px;
   }
   .introduction{
-   font-family: "MS Pゴシック";
-   text-size: 30px;
+    //font-family: "MS Pゴシック";
+    text-size: 30px;
   }
 }
+
 // ジャンル検索
 .genre_search{
-  font-family: 'Hannotate TC',sans-serif;
+  //font-family: 'Hannotate TC',sans-serif;
 }
 .test:hover{
   color: black;
   text-decoration: none;
 }
+
 // アバウト画面
 #aboutbox{
   height: 500px;
@@ -117,7 +185,7 @@ a{
     z-index: 9999;
 
     h1{
-      font-family: 'Hannotate TC',sans-serif;
+      //font-family: 'Hannotate TC',sans-serif;
       font-size: 5vw;
     }
     p{
@@ -126,6 +194,7 @@ a{
     }
   }
 }
+
 // 商品詳細ページ
 .product-show{
   height: 300px;
@@ -147,37 +216,37 @@ a{
   }
 }
 .product-show-detail{
-   font-family: 'Hannotate TC',sans-serif;
-   padding-left: 100px;
-   padding-top: 30px;
-   .product-name{
-     font-size: 30px;
-     border-bottom:  solid 2px #696969;
-   }
-   .product-introduction{
-     font-size: 20px;
-   }
-   .product-price{
-     font-size: 20px;
-   }
-   input{
-     margin-top: 20px;
-     display: block;
-     text-align: center;
-     line-height: 30px;
-     padding: 10px 40px;
-    // background-color: #f5deb3;
-     color: #696969;
-     border: solid 2px #696969;
-     font-family:  "MS Pゴシック";
-     background-color: white;
-   }
-   input:hover{
-     background-color: #696969;
-     color: white;
-     border: solid 2px #696969;
-     font-family:  "MS Pゴシック";
-   }
+  //font-family: 'Hannotate TC',sans-serif;
+  padding-left: 100px;
+  padding-top: 30px;
+  .product-name{
+    font-size: 30px;
+    border-bottom:  solid 2px #696969;
+  }
+  .product-introduction{
+    font-size: 20px;
+  }
+  .product-price{
+    font-size: 20px;
+  }
+  input{
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px 40px;
+    background-color: #f5deb3;
+    color: #696969;
+    border: solid 2px #696969;
+    //font-family:  "MS Pゴシック";
+    background-color: white;
+  }
+  input:hover{
+    background-color: #696969;
+    color: white;
+    border: solid 2px #696969;
+    //font-family:  "MS Pゴシック";
+  }
 }
 
 
