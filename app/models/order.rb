@@ -13,6 +13,10 @@ class Order < ApplicationRecord
 
   has_many :order_products
   has_many :products, through: :order_products
+<<<<<<< HEAD
+=======
+  belongs_to :customer
+>>>>>>> origin/order
 
   validates :delivery_postal_code, presence: true
   validates :delivery_address, presence: true

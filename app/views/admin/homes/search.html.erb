@@ -1,0 +1,14 @@
+<div class ="container">
+  <div class="row">
+    <div class ="col">
+     <% if @range == "会員" %>
+       <%= render 'admin/customers/index', customers: @customers %>
+     <% else %>
+       <% unless @products == nil %>
+       <%= render 'admin/products/index', products: @products %>
+       <% end %>
+     <% end %>
+    </div>
+  </div>
+</div>
+

@@ -49,6 +49,16 @@
                   </div>
                 </li>
               </ul>
+<<<<<<< HEAD
+=======
+            </div>
+            <div class="search">
+              <%= form_with url:  search_all_path, method: :get, local: :true do |f| %>
+              <%= f.text_field :word %>
+              <%= f.submit "検索" %>
+              <% end %>
+            </div>
+>>>>>>> origin/order
 
             <% elsif admin_signed_in? %>
               <ul class="navbar-nav ml-auto">
@@ -78,8 +88,19 @@
                   </div>
                 </li>
               </ul>
+<<<<<<< HEAD
 
             <% else %>
+=======
+            </div>
+            <%= form_with url: admin_search_path, method: :get, local: :true do |f| %>
+              <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
+              <%= f.text_field :word %>
+              <%= f.submit "検索" %>
+             <% end %>
+          <% else %>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+>>>>>>> origin/order
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                   <div class="social">
