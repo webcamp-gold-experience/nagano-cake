@@ -9,13 +9,13 @@ Rails.application.routes.draw do
     resources :cart_products, module: :public, only: [:index, :update, :destroy]
       post '/cart_products', to: 'public/cart_products#create',  as: 'create_cart_products'
 
+      get '/products/search_all', to: 'public/products#search_all' , as: 'search_all'
     resources :products, module: :public, only: [:index, :show]
       get '/products/:id/search', to: 'public/products#search' , as: 'genre_searches'
-
-    resource :customers, module: :public, only: [:edit, :update]
-      get '/customers/my_page', to: 'public/customers#show'
-      get '/customers/unsubscribe', to: 'public/customers#unsubscribe'
       patch '/customers/withdraw', to: 'public/customers#withdraw'
+    resources :customers, module: :public, only: [:edit, :update]
+      get '/customers/my_page', to: 'public/customers#show'
+      get '/customers/:id/my_page', to: 'public/customers#unsubscribe', as: 'customer_unsubscribe'
 
     resources :orders, module: :public, only: [:new, :create, :index, :show]
       post '/orders/confirm', to: 'public/orders#confirm'
@@ -23,8 +23,9 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root to: 'homes#top'
+      get 'search', to: 'homes#search' , as: 'search'
       resources :orders, only: [:show, :update] do
-        patch '/order_details/:id', to: 'order_details#update'
+        patch '/order_details/:id', to: 'order_details#update', as: 'details'
       end
 
       resources :genres, only: [:index, :create, :edit, :update, :destroy]

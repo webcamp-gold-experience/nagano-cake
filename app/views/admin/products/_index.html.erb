@@ -1,0 +1,35 @@
+<h2>商品一覧</h2>
+<div class="text-right mb-3">
+  <%= link_to new_admin_product_path, class:"btn btn-light shadow-sm rounded-circle p-0 text-center", style:"width:2rem;height:2rem;" do %>
+  <p>+</p>
+  <% end %>
+</div>
+<table class = "table" >
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <% products.each do |product| %>
+    <tbody>
+      <tr>
+        <td><%= product.id.to_s %></td>
+        <td class = "text-dark"><%=link_to product.name, admin_product_path(product) %></td>
+        <td><%= product.price %>円</td>
+        <td><%= product.genre.name %></td>
+        <div>
+        <% if product.sales_status_before_type_cast == 0 %>
+          <td class="text-success"><%= product.sales_status_i18n %></td>
+        <% elsif product.sales_status_before_type_cast == 1 %>
+          <td class="text-muted"><%= product.sales_status_i18n %></td>
+        <% end %>
+        </div>
+  
+      </tr>
+    </tbody>
+  <% end %>
+</table>

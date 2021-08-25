@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-8">
       <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
-      <table class="table">
+      <table class="table table-hover table-borderless">
         <tr><th>会員ID</th><th><%= @customer.id %></th></tr>
         <tr><th>氏名</th><th><%= @customer.last_name %><%= @customer.first_name %></th></tr>
         <tr><th>フリカナ</th><th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th></tr>
@@ -10,7 +10,15 @@
         <tr><th>住所</th><th><%= @customer.address %></th></tr>
         <tr><th>電話番号</th><th><%= @customer.phone_number %></th></tr>
         <tr><th>メールアドレス</th><th><%= @customer.email %></th></tr>
-        <tr><th>会員ステータス</th><th><%= @customer.is_deleted_i18n %></th></tr>
+        <tr><th>会員ステータス</th>
+        <div>
+        <% if @customer.is_deleted_before_type_cast == 0 %>
+          <th class="text-success"><%= @customer.is_deleted_i18n %></th>
+        <% else %>
+          <th class="text-muted"><%= @customer.is_deleted_i18n %></th>
+        <% end %>
+        </div>
+        </tr>
       </table>
        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
        <%= link_to "注文一覧画面を見る", admin_customers_path, class: "btn btn-sm btn-primary" %>

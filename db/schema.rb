@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
-    t.boolean "is_deleted", default: true, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "product_id", null: false
-    t.integer "tax_price", null: false
+    t.integer "tax_price", null: fals
     t.integer "amount", null: false
     t.integer "production_status", default: 0, null: false
     t.datetime "created_at", null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
     t.string "image_id", null: false
     t.integer "price", null: false
     t.integer "sales_status", default: 0, null: false
+    t.string "conversion_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
