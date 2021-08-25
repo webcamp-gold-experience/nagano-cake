@@ -13,7 +13,7 @@ class Public::ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where(genre_id: params[:id], sales_status: 0)
+    @products = Product.where(genre_id: params[:id], sales_status: 0).page(params[:page]).per(6)
     @genres = Genre.all
     @genre = Genre.find(params[:id])
   end

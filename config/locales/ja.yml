@@ -25,3 +25,10 @@ ja:
         waiting_for_production: "製作待ち"
         during_production: "製作中"
         production_completed: "製作完了"
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'

@@ -163,7 +163,6 @@ a{
 
 .bottom-comment{
   height: 200px;
-  margin:;
 }
 #about-box{
   height: 300px;
@@ -204,16 +203,18 @@ a{
     position: absolute;
     width: 100%;
     height: auto;
-
+    border-radius: 30px;
   }
   img:hover{
 
   }
 }
+
 .product-show-detail{
    font-family: 'Hannotate TC',sans-serif;
    padding-left: 100px;
    padding-top: 30px;
+
    .product-name{
      font-size: 30px;
      border-bottom:  solid 2px #696969;
@@ -243,6 +244,10 @@ a{
      font-family:  "MS Pゴシック";
    }
 }
-
-
-
+// ページネーションの中央よせ
+.pagination {
+  justify-content: center;
+}
+.product-detail{
+  
+}
