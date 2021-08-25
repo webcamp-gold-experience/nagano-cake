@@ -14,19 +14,75 @@
  *= require_self
  */
 @import "bootstrap";
-a{
-  text-decoration: none;
-  color: black;
-}
 // トップ画面
+a, p, th, td, h1, h2, h3, h4, h5{
+  //text-decoration: none;
+  color: #696969;
+  font-weight: normal;
+}
 
-.product-title{
-     font-family: 'Hannotate TC',sans-serif;
-     text-align: center;
-     margin-bottom: 60px;
-     margin-top: 50px;
-    // border-bottom: double #FAEBD7;
+// ヘッダー
+/*==================================================
+　5-3-1 中心から外に線が伸びる（下部）
+===================================*/
+
+.nav-link{
+    /*線の基点とするためrelativeを指定*/
+  position: relative;
+}
+
+.nav-link.current,
+.nav-link:hover{
+  color:#0481A2;
+}
+
+.nav-link::after {
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  /*線の形状*/
+  width: 80%;
+  height: 2px;
+  background: #666c67;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0, 1);/*X方向0、Y方向1*/
+  transform-origin: center top;/*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.nav-link.current::after,
+.nav-link:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+.about-comment {
+  color: #665a1a;
+  font-weight: lighter;
+}
+
+//ボディ
+body {
+  animation-name: fadeInAnime;
+  animation-fill-mode:backwards;
+  animation-duration:2s;
+  animation-timing-function:ease;
+  animation-delay: 0.5s;
+  animation-direction:normal;
   }
+
+@keyframes fadeInAnime{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 #box{
   height: 600px;
@@ -41,7 +97,6 @@ a{
     z-index: 9999;
 
     h1{
-      font-family: 'Hannotate TC',sans-serif;
       text-align: center;
       font-size: 7vw;
     }
@@ -89,14 +144,12 @@ a{
   color: black;
   }
   .name{
-    font-family: 'Hannotate TC',sans-serif;
     text-size: 100px;
     border-bottom: 1px #DEB887;
     text-overflow: ellipsis;
 
   }
   .price{
-    font-family: 'Hannotate TC',sans-serif;
     text-size: 50px;
     text-align:center;
   }
@@ -132,12 +185,35 @@ a{
 
 // ジャンル検索
 .genre_search{
-  font-family: 'Hannotate TC',sans-serif;
+    // border: 1px solid #f0f0f0;
+    transition: 0.5s;
+    margin: 40px;
+  }
+  .product-box:hover{
+    opacity: 0.6;
+    color: black;
+  }
+  .name{
+    //font-family: 'Hannotate TC',sans-serif;
+    text-size: 100px;
+    border-bottom: 1px #DEB887;
+
+  }
+  .price{
+    //font-family: 'Hannotate TC',sans-serif;
+    text-size: 50px;
+  }
+  .introduction{
+    //font-family: "MS Pゴシック";
+    text-size: 30px;
+  }
 }
+
 .test:hover{
   color: black;
   text-decoration: none;
 }
+
 // アバウト画面
 #aboutbox{
   height: 500px;
@@ -151,7 +227,6 @@ a{
     z-index: 9999;
 
     h1{
-      font-family: 'Hannotate TC',sans-serif;
       font-size: 5vw;
     }
     p{
@@ -189,6 +264,7 @@ a{
     }
   }
 }
+
 // 商品詳細ページ
 .product-show{
   height: 300px;
@@ -211,7 +287,6 @@ a{
 }
 
 .product-show-detail{
-   font-family: 'Hannotate TC',sans-serif;
    padding-left: 100px;
    padding-top: 30px;
 
@@ -249,5 +324,64 @@ a{
   justify-content: center;
 }
 .product-detail{
-  
+    border: solid 5px #696969;
+  }
+  img:hover{
+    border: solid 5px #dcdcdc;
+  }
+}
+.product-show-detail{
+  padding-left: 100px;
+  padding-top: 30px;
+  .product-name{
+    font-size: 30px;
+    border-bottom:  solid 2px #696969;
+  }
+  .product-introduction{
+    font-size: 20px;
+  }
+  .product-price{
+    font-size: 20px;
+  }
+  input{
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px 40px;
+    background-color: #f5deb3;
+    color: #696969;
+    border: solid 2px #696969;
+    //font-family:  "MS Pゴシック";
+    background-color: white;
+  }
+  input:hover{
+    background-color: #696969;
+    color: white;
+    border: solid 2px #696969;
+    //font-family:  "MS Pゴシック";
+  }
+}
+
+// サンクスページ
+#TextTyping {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5rem;
+  letter-spacing: .5em;
+    word-break : break-all;
+}
+#TextTyping span {
+  display: none;
+}
+
+/*文字列後ろの線の設定*/
+#TextTyping::after {
+  content: "|";
+  animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime{
+  from{opacity:0}
+  to{opacity:1}
 }
