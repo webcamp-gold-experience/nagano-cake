@@ -1,2 +1,15 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div id="aboutbox" >
+  <div class="box-text">
+  <%= link_to image_tag("IMG_0507.PNG", width: 300), "/", class:"navbar-brand p-3" %>
+  <p class="about-comment">
+    ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+    お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+    様々なバリエーションをご用意しております。<br>
+    また、全国へ発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。<br>
+    ぜひご注文ください。
+  </p>
+  </div>
+  <div class="about-image">
+    <%= image_tag 'about.jpg', :width => '100%', :height => '100%' %>
+  </div>
+</div>

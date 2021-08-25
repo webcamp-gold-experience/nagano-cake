@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_002406) do
     t.string "image_id", null: false
     t.integer "price", null: false
     t.integer "sales_status", default: 0, null: false
+    t.string "conversion_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

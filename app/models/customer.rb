@@ -21,6 +21,14 @@ class Customer < ApplicationRecord
   end
 
   has_many :addresses
-
   has_many :orders
+
+  def self.looks(word)
+    @customers = []
+    word.split(/[[:blank:]]+/).each do |keyword|
+    next if keyword == ""
+    @customers += Customer.where('last_name LIKE ? or first_name LIKE ? or last_name_kana LIKE ? or first_name_kana LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
+    end
+    @customers.uniq!
+  end
 end

@@ -70,3 +70,5 @@ gem 'enum_help'
 gem "font-awesome-sass", "~> 5.13"
 gem "font_awesome5_rails"
 gem 'rubocop-airbnb'
+gem 'miyabi'
+
