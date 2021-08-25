@@ -7,7 +7,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :image_id, null: false
       t.integer :price, null: false
       t.integer :sales_status, default: 0, null: false
-
+      t.string :conversion_name
+      
       t.timestamps
     end
   end

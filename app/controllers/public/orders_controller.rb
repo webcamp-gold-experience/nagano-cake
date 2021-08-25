@@ -22,10 +22,9 @@ class Public::OrdersController < ApplicationController
       @order.delivery_postal_code = params[:order][:delivery_postal_code]
       @order.delivery_address = params[:order][:delivery_address]
       @order.delivery_name = params[:order][:delivery_name]
-    end
-
-    if @order.invalid?
-     render :new
+      if @order.delivery_postal_code.empty? || @order.delivery_address.empty? || @order.delivery_name.empty?
+        redirect_to new_order_path
+      end
     end
   end
   nil

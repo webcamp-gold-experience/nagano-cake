@@ -1,0 +1,31 @@
+<table class="table table-hover table-borderless ">
+  <tr>
+    <th>購入者</th>
+    <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+  </tr>
+
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+  </tr>
+
+  <tr>
+    <th>配送先</th>
+    <td><%= @order.delivery_address %></td>
+  </tr>
+
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+        <%= f.submit "変更", class: "btn btn-success" %>
+      <% end %>
+    </td>
+  </tr>
+</table>

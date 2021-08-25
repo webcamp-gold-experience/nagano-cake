@@ -18,4 +18,42 @@ class Public::ProductsController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
+  def search_all
+
+    @genres = Genre.all
+    @word = params[:word]
+     @genre = []
+      @word.split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        @genre += Genre.where(name: keyword)
+      end
+
+    if @word == ""
+      @products = Product.all
+
+    elsif
+      @genre.present?
+      @products = []
+      @genre.each do |genre|
+      @products << genre.products
+      end
+      @products.flatten!
+
+    else
+
+      @products = []
+      @word.split(/[[:blank:]]+/).each do |keyword|
+      next if keyword == ""
+        if keyword.match(/[一-龠々]/)
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword.to_kanhira.to_roman}%")
+        elsif keyword.is_hira? || keyword.is_kana?
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword.to_roman}%")
+        else
+          @products += Product.where('conversion_name LIKE ?', "%#{keyword}%")
+        end
+      end
+      @products.uniq!
+    end
+  end
+
 end
