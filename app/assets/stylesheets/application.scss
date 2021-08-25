@@ -269,4 +269,29 @@ body {
   from{opacity:0}
   to{opacity:1}
 }
+// ページネーション中央よせ
+.pagination {
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 100px;
+}
+.pagination li.current a {
+	background-color: white; 
+	border: 1px solid #f5deb3;
+	color: white;
+}
+.pagination li a {
+	background-color: #deb887;
+	border: white;
+	color: white;
+}
+.pagination a:hover {
+  background-color: #faebd7;
+　color: white;
+　font-size: 20px;
+　font-weight: bold
+}
 
+.page-item.active .page-link {
+  background-color: #f5deb3;
+}

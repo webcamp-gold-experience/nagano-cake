@@ -1,6 +1,6 @@
 class Public::ProductsController < ApplicationController
   def index
-    @products = Product.where(sales_status:0)
+    @products = Product.where(sales_status:0).page(params[:page]).per(6)
     @genres = Genre.all
 
   end
@@ -13,7 +13,7 @@ class Public::ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where(genre_id: params[:id], sales_status: 0)
+    @products = Product.where(genre_id: params[:id], sales_status: 0).page(params[:page]).per(9)
     @genres = Genre.all
     @genre = Genre.find(params[:id])
   end
@@ -29,7 +29,7 @@ class Public::ProductsController < ApplicationController
       end
 
     if @word == ""
-      @products = Product.all
+      @products = Product.all.page(params[:page]).per(6)
 
     elsif
       @genre.present?
