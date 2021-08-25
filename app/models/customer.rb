@@ -14,13 +14,6 @@ class Customer < ApplicationRecord
 
   has_many :products, through: :cart_products
 
-<<<<<<< HEAD
-  enum is_deleted: { consent: true, nonconsent: false }
-
-  has_many :addresses
-  has_many :orders
-end
-=======
   enum is_deleted: { consent: false, nonconsent: true }
 
   def active_for_authentication?
@@ -29,7 +22,7 @@ end
 
   has_many :addresses
   has_many :orders
-  
+
   def self.looks(word)
     @customers = []
     word.split(/[[:blank:]]+/).each do |keyword|
@@ -39,4 +32,3 @@ end
     @customers.uniq!
   end
 end
->>>>>>> origin/develop
