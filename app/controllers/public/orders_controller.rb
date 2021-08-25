@@ -28,6 +28,7 @@ class Public::OrdersController < ApplicationController
      render :new
     end
   end
+  nil
 
   def create
     @cart_products = CartProduct.where(customer_id: current_customer.id)

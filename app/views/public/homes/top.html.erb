@@ -29,29 +29,35 @@
       <div class="new-products">
         <div class="d-flex align-content-around flex-wrap">
            <% @products.each do |product| %>
-              <div class="product-box mr-5 ml-5 mb-5">
-            <%= link_to product_path(product), class:"test" do %>
-                <div class="product-image mb-2">
-                  <%= attachment_image_tag product, :image, :fill, 250, 200, format: 'jpeg' %>
-                </div>
-                <div class="product-detail break-all break-word">
-                  <p class="name  text-center pb-2">
-                    <%= product.name %>
-                  </p>
-                  <p class="price">¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
-                  <p class="introduction">
-                    <%= product.introduction %>
-                  </p>
-                </div>
-            <% end %>
+              <div class="product-box mr-4 ml-5 mb-3">
+                 <%= link_to product_path(product), class:"test" do %>
+                  <div class="product-image mb-2">
+                    <%= attachment_image_tag product, :image, :fill, 400, 300, format: 'jpeg' %>
+                  </div>
+                  <div class="product-detail break-all break-word">
+                    <p class="name  text-center pb-2">
+                      <%= product.name %>
+                    </p>
+                    <p class="price">¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
+                    <p class="introduction">
+                      <%#= product.introduction %>
+                    </p>
+                    <p class ="show"><%#= link_to "商品詳細", product_path(product) , class:"show-btn" %></p>
+                  </div>
+                <% end %>
               </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-  <div class="row float-right">
-    <%= link_to "全ての商品を見る 》", products_path %>
-  </div>
+ <div class="row">
+   <div class="col">
+     
+   </div>
+   <div class="col-3 ">
+     <%= link_to "全ての商品を見る 》", products_path %>
+   </div>
+ </div>
 </div>
 

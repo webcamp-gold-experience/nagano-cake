@@ -98,13 +98,38 @@ a{
   .price{
     font-family: 'Hannotate TC',sans-serif;
     text-size: 50px;
+    text-align:center;
   }
-  .introduction{
-   font-family: "MS Pゴシック";
-   text-size: 30px;
-   text-overflow: ellipsis;
-  }
+  // .introduction{
+  // font-family: "MS Pゴシック";
+  // text-size: 30px;
+  // text-overflow: ellipsis;
+  // text-align:center;
+  // }
 }
+// .show{
+
+// a {
+// 	 margin-top: 20px;
+//     display: block;
+//     text-align: center;
+//     line-height: 30px;
+//     padding: 10px 30px;
+//     // background-color: #f5deb3;
+//     color: #696969;
+//     border: solid 2px #696969;
+//     font-family:  "MS Pゴシック";
+//     background-color: white;
+// }
+
+// a:hover {
+// 	background-color: #696969;
+//     color: white;
+//     border: solid 2px #696969;
+//     font-family:  "MS Pゴシック";
+// }
+// }
+
 // ジャンル検索
 .genre_search{
   font-family: 'Hannotate TC',sans-serif;
@@ -135,6 +160,36 @@ a{
     }
   }
 }
+
+.bottom-comment{
+  height: 200px;
+  margin:;
+}
+#about-box{
+  height: 300px;
+  position: relative;
+  width: 100%;
+
+  color: white;
+ #about-images{
+    .image1 {
+      background-image: url(image1.jpg);
+      background-size : cover ;
+    }
+    .image2 {
+      background-image: url(image2.jpg);
+      background-size : cover ;
+    }
+    .image3 {
+      background-image: url(image3.jpg);
+      background-size : cover ;
+    }
+    .image4 {
+      background-image: url(image4.jpg);
+      background-size : cover ;
+    }
+  }
+}
 // 商品詳細ページ
 .product-show{
   height: 300px;
@@ -149,7 +204,7 @@ a{
     position: absolute;
     width: 100%;
     height: auto;
-    border: solid 5px #696969;
+
   }
   img:hover{
 
