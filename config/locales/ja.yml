@@ -22,6 +22,6 @@ ja:
     order_product:
       production_status:
           no_start: "着手不可"
-          waiting_for_production: "制作待ち"
-          during_production: "制作中"
-          production_completed: "制作完了"
+          waiting_for_production: "製作待ち"
+          during_production: "製作中"
+          production_completed: "製作完了"
