@@ -22,7 +22,7 @@ class Customer < ApplicationRecord
 
   has_many :addresses
   has_many :orders
-  
+
   def self.looks(word)
     @customers = []
     word.split(/[[:blank:]]+/).each do |keyword|
