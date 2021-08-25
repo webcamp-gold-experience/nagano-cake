@@ -1,17 +1,16 @@
-
-    <!--<div class="genre_search col-2 border">-->
-      <%#= render "public/products/genre_search", genres: @genres %>
-    <!--</div>-->
+<!--<div class="genre_search col-2 border">-->
+  <%#= render "public/products/genre_search", genres: @genres %>
+<!--</div>-->
 <div id="box" >
   <div class="box-text">
-  <h1 class = "welcome-coment">
-    <%= link_to image_tag("IMG_0507.PNG", width: 500), "/", class:"navbar-brand p-3" %>
-  </h1>
-  <!--<p class = "shop-comment">
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。<br>
-  </p>-->
+    <h1 class = "welcome-coment">
+      <%= link_to image_tag("IMG_0507.PNG", width: 500), "/", class:"navbar-brand p-3" %>
+    </h1>
+    <!--<p class = "shop-comment">
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。<br>
+    </p>-->
   </div>
   <div id="images">
     <div class="image1"></div>
@@ -26,15 +25,15 @@
     <h2>新着商品</h2>
   </div>
   <div class="row">
-     <div class="genre_search col-lg-2 col-sm-3">
+    <div class="genre_search col-lg-2 col-sm-3">
       <%= render "public/products/genre_search", genres: @genres %>
-     </div>
+    </div>
     <div class="col-lg-10 col-sm-9">
       <div class="new-products">
         <div class="d-flex align-content-around flex-wrap">
-           <% @products.each do |product| %>
-              <div class="product-box mr-5 ml-5 mb-5">
-            <%= link_to product_path(product), class:"test" do %>
+          <% @products.each do |product| %>
+            <div class="product-box mr-5 ml-5 mb-5">
+              <%= link_to product_path(product), class:"test" do %>
                 <div class="product-image mb-2">
                   <%= attachment_image_tag product, :image, :fill, 250, 200, format: 'jpeg' %>
                 </div>
@@ -47,8 +46,8 @@
                     <%= product.introduction %>
                   </p>
                 </div>
-            <% end %>
-              </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
