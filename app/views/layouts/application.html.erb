@@ -15,118 +15,221 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <div id="box" >
-        <div class="box-text">
-          <h1 class = "welcome-coment">
-            <%= link_to image_tag("ロゴ大.PNG", width: 500), "/", class:"navbar-brand p-3" %>
-          </h1>
-        </div>
-        <div id="images">
-          <div class="image1"></div>
-          <div class="image2"></div>
-          <div class="image3"></div>
-          <div class="image4"></div>
-        </div>
-      <%= link_to image_tag("ロゴ小.PNG", width: 100), "/", class:"navbar-brand p-3" %>  
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if customer_signed_in? %>
-              <div class="text-center">
-                ようこそ
-                <%= current_customer.last_name %>
-                さん
-              </div>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <div class="social">
-                    <%= link_to 'マイページ', customers_my_page_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to '商品一覧', products_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'カート', cart_products_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link' %>
-                  </div>
-                </li>
-              </ul>
-            <% elsif admin_signed_in? %>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <div class="social">
-                    <%= link_to '商品一覧', admin_products_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to '会員一覧', admin_customers_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to '注文履歴一覧', admin_root_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <%= form_with url: admin_search_path, method: :get, local: :true do |f| %>
-              <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
-              <%= f.text_field :word %>
-              <%= f.submit "検索" %>
-            <% end %>
-          <% else %>
+    <% if request.path == '/' %>
+      <header class="shadow-sm">
+        <div id="box" >
+          <div class="box-text">
+            <h1 class = "welcome-coment">
+              <%= link_to image_tag("ロゴ大.PNG", width: 500), "/", class:"navbar-brand p-3" %>
+            </h1>
+          </div>
+          <div id="images">
+            <div class="image1"></div>
+            <div class="image2"></div>
+            <div class="image3"></div>
+            <div class="image4"></div>
+          </div>
+        <%= link_to image_tag("ロゴ小.PNG", width: 100), "/", class:"navbar-brand p-3" %>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to '商品一覧', products_path, class: 'nav-link text-dark' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div class="social">
-                    <%= link_to 'ログイン', customer_session_path, class: 'nav-link text-dark' %>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          <% end %>
+              <% if customer_signed_in? %>
+                <div class="text-center">
+                  ようこそ
+                  <%= current_customer.last_name %>
+                  さん
+                </div>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <div class="social">
+                      <%= link_to 'マイページ', customers_my_page_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '商品一覧', products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'カート', cart_products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link' %>
+                    </div>
+                  </li>
+                </ul>
+              <% elsif admin_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <div class="social">
+                      <%= link_to '商品一覧', admin_products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '会員一覧', admin_customers_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '注文履歴一覧', admin_root_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <%= form_with url: admin_search_path, method: :get, local: :true do |f| %>
+                <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
+                <%= f.text_field :word %>
+                <%= f.submit "検索" %>
+              <% end %>
+            <% else %>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '商品一覧', products_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログイン', customer_session_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </nav>
         </div>
-      </nav>
-      </div>
-    </header>
+      </header>
+    <% else %>
+      <header class="shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+        <%= link_to image_tag("ロゴ小.PNG", width: 100), "/", class:"navbar-brand p-3" %>
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <% if customer_signed_in? %>
+                <div class="text-center">
+                  ようこそ
+                  <%= current_customer.last_name %>
+                  さん
+                </div>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <div class="social">
+                      <%= link_to 'マイページ', customers_my_page_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '商品一覧', products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'カート', cart_products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link' %>
+                    </div>
+                  </li>
+                </ul>
+              <% elsif admin_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <div class="social">
+                      <%= link_to '商品一覧', admin_products_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '会員一覧', admin_customers_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '注文履歴一覧', admin_root_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <%= form_with url: admin_search_path, method: :get, local: :true do |f| %>
+                <%= f.select :range, options_for_select([['会員'], ['商品'],['ジャンル']]) %>
+                <%= f.text_field :word %>
+                <%= f.submit "検索" %>
+              <% end %>
+            <% else %>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '商品一覧', products_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="social">
+                      <%= link_to 'ログイン', customer_session_path, class: 'nav-link text-dark' %>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </nav>
+        </div>
+      </header>
+    <% end %>
     <%= yield %>
   </body>
 </html>
