@@ -83,6 +83,17 @@ body {
     opacity: 1;
   }
 }
+// ジャンル検索
+.genre-list {
+  list-style: none;
+  padding: 0;
+}
+.genre-search-text{
+  text-size: 15px;
+}
+.genre-link:hover{
+  color: white;
+}
 // トップ画面
 .product-title{
   //font-family: 'Hannotate TC',sans-serif;
@@ -91,6 +102,7 @@ body {
   margin-top: 50px;
   // border-bottom: double #FAEBD7;
 }
+
 
 #box{
   height: 600px;
@@ -139,10 +151,9 @@ body {
   .product-box{
     // border: 1px solid #f0f0f0;
     transition: 0.5s;
-    margin: 40px;
+    margin-top: 40px;
   }
   .product-box:hover{
-    opacity: 0.6;
     color: black;
   }
   .name{
@@ -215,11 +226,10 @@ body {
 }
 .product-show-detail{
   //font-family: 'Hannotate TC',sans-serif;
-  padding-left: 100px;
-  padding-top: 30px;
+  padding-top: 60px;
   .product-name{
     font-size: 30px;
-    border-bottom:  solid 2px #696969;
+    border-bottom:  solid 1px #696969;
   }
   .product-introduction{
     font-size: 20px;
@@ -274,9 +284,10 @@ body {
   justify-content: center;
   margin: auto;
   margin-bottom: 100px;
+  margin-top: 50px;
 }
 .pagination li.current a {
-	background-color: white; 
+	background-color: white;
 	border: 1px solid #f5deb3;
 	color: white;
 }
@@ -294,4 +305,98 @@ body {
 
 .page-item.active .page-link {
   background-color: #f5deb3;
+}
+
+/*========= 検索窓のためのCSS ===============*/
+
+/*検索窓のエリア*/
+ #search-wrap {
+  // position: absolute;/*絶対配置にして*/
+   z-index: 2;/*最前面に設定。数字は変更可*/
+   top:10px;
+   right:10px;
+}
+
+/*テキスト入力input設定*/
+ #search-text{
+  -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
+  width: 40px;/*テキスト入力エリアが伸びる前の横幅*/
+  height: 40px;
+  padding: 1px;
+  border: none;
+  background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 10px center;/*虫眼鏡アイコンを背景に表示*/
+  background-size: 25px 25px;
+  transition: all 0.5s;/*transitionを使ってスムースに伸ばす*/
+  outline: none;
+  cursor: pointer;/*カーソルを指マークに*/
+}
+
+/*テキスト入力inputにフォーカスした時の形状*/
+ #search-text:focus {
+  width: 200px;/*テキスト入力エリアが伸びる後の横幅*/
+  padding: 20px 0 20px 60px;
+  box-shadow: 0 2px rgba(6,0,1,.26);
+}
+
+
+/*　画像の拡大＋テキスト出現　*/
+
+.zoomInText{/*テキストの基点となる位置を定義*/
+  position: relative;
+}
+
+.zoomInText span.mask{
+  position: relative;
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+  display: block;/*画像をくくるspanタグをブロック要素にする*/
+    line-height: 0;/*行の高さを0にする*/
+    overflow:hidden;/*拡大してはみ出る要素を隠す*/
+}
+
+.zoomInText:hover span.mask::before{/*hoverした時の変化*/
+  content:"";
+  position: absolute;
+  z-index:2;
+  top:10px;
+  left:10px;
+  width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  background:rgba(0,0,0,0.5);/*背景色*/
+}
+
+.zoomInText img{
+  transform: scale(1);
+  filter: blur(0);
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+}
+
+.zoomInText:hover img{/*hoverした時の変化*/
+  transform: scale(1.2);/*拡大の値を変更したい場合はこの数値を変更*/
+  filter: blur(2px);/*ぼかし具合を変更したい場合はこの数値を変更*/
+}
+
+.zoomInText span.cap{
+  opacity:0;
+  transition: .5s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+  position: absolute;
+  z-index:3;/*テキストを前面に出す*/
+  top: 50%;
+    left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    line-height: 1.5;/*行の高さを1.5にする*/
+}
+
+.zoomInText:hover span.cap{/*hoverした時の変化*/
+  opacity:1;
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+/*　横幅　*/
+
+.zoomInText{
+  width: 100%;
+    margin: 0 auto;/*中央揃え*/
 }
