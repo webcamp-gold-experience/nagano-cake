@@ -166,6 +166,13 @@
                       <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link' %>
                     </div>
                   </li>
+                  <li>
+                    <div class="search", id="search-wrap" >
+                      <%= form_with url:  search_all_path ,role:"search", method:"get", action:"", local: :true do |f| %>
+                      <%= f.text_field :word , id:"search-text" %>
+                      <% end %>
+                    </div>
+                </li>
                 </ul>
               <% elsif admin_signed_in? %>
                 <ul class="navbar-nav ml-auto">

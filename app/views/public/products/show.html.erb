@@ -1,15 +1,26 @@
-<div class="container-fluid">
    <div class="product-title">
-    <h2>商品詳細</h2>
+    <h2 class ="mb-5">商品詳細</h2>
+    <%= render "genre_search", genres: @genres %>
   </div>
+<div class="container pb-5">
   <div class="row mt-5">
-    <div class="genre_search col-lg-2 col-sm-3">
-     <%= render "genre_search", genres: @genres %>
+
+    <!--<div class="col-6">-->
+    <!--    <%#= attachment_image_tag @product, :image, :fill, 500, 400, format: 'jpeg' %>-->
+    <!--  </div>-->
+
+    <div class="col-6 zoomInText">
+      <span class="mask">
+        <%= attachment_image_tag @product, :image, :fill, 550, 400, format: 'jpeg' %>
+        <span class="cap">
+          <%= @product.name %><br>
+          <span> ¥<%= @product.price %></span><br>
+          <span><%= @product.introduction %></span>
+        </span>
+      </span>
     </div>
-    <div class="product-show col-lg-10 col-sm-9 d-flex flex-row">
-      <div class="product-show-img">
-        <%= attachment_image_tag @product, :image, :fill, 250, 200, format: 'jpeg' %>
-      </div>
+
+    <div class="col-6">
       <div class="product-show-detail">
         <p class="product-name"><%= @product.name %></p>
         <p class="product-introduction"><%= @product.introduction %></p>
@@ -25,10 +36,7 @@
           <%= f.submit 'カートに入れる', class:"btn btn-outline-secondary" %>
         <% end %>
         </div>
-        <%#= link_to 'カートに入れる', create_cart_products_path(@cart_products, product_id: @product.id, customer_id: current_customer.id, amount: 1), method: :post %>
-        <%#= link_to 'カートに入れる', {controller: 'cart_products', action: 'create', product_id: @product.id, customer_id: current_customer.id, amount: 1 }, method: :post %>
       </div>
-     </div>
     </div>
   </div>
 </div>

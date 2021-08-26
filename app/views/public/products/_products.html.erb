@@ -1,0 +1,30 @@
+<div class="container">
+
+ <div class="new-products justify-content-center">
+  <div class="row pr-1 pl-1">
+    <% products.each do |product| %>
+      <div class="col-lg-4 col-md-6 col-sm-12 product-box mx-auto justify-content-center">
+        <%= link_to product_path(product), class:"test ustify-content-center" do %>
+          <div class="product-image text-center mb-2">
+            <div class="zoomInText">
+              <span class="mask">
+                <%= attachment_image_tag product, :image, :fill, 350, 300, format: 'jpeg' %>
+                <span class="cap">
+                  <%= product.name %><br>
+                  <span> ¥<%= product.price %></span><br>
+                  <span><%= product.introduction %></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="product-detail break-all break-word">
+            <p class="name  text-center pb-2">
+              <%= product.name %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
