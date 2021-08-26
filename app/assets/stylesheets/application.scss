@@ -113,12 +113,19 @@ body {
   .navbar {
     position: absolute;
     top: 7%;
-    left: 73%;
+    left: 70%;
     z-index: 9999;
   }
   .navbar-brand {
     position: absolute;
     top: 2%;
+    left: 2%;
+    z-index: 9999;
+  }
+  #welcome-name {
+    color: #696969;
+    position: absolute;
+    top: 18%;
     left: 2%;
     z-index: 9999;
   }
