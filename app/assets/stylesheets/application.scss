@@ -98,6 +98,18 @@ body {
   width: 100%;
   min-height: 100vh;
   color: white;
+  .navbar {
+    position: absolute;
+    top: 7%;
+    left: 73%;
+    z-index: 9999;
+  }
+  .navbar-brand {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 9999;
+  }
   .box-text {
     position: absolute;
     top: 35%;
@@ -117,19 +129,19 @@ body {
   }
   #images{
     .image1 {
-      background-image: url(image1.jpg);
+      background-image: url(A.jpeg);
       background-size : cover ;
     }
     .image2 {
-      background-image: url(image2.jpg);
+      background-image: url(B.jpeg);
       background-size : cover ;
     }
     .image3 {
-      background-image: url(image3.jpg);
+      background-image: url(C.jpeg);
       background-size : cover ;
     }
     .image4 {
-      background-image: url(image4.jpg);
+      background-image: url(D.jpeg);
       background-size : cover ;
     }
   }
@@ -270,3 +282,7 @@ body {
   to{opacity:1}
 }
 
+i {
+  display: inline-block;
+  margin: 0px 10px;
+}
