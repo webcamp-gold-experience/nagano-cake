@@ -30,9 +30,9 @@ class Public::OrdersController < ApplicationController
 
   def create
     @cart_products = CartProduct.where(customer_id: current_customer.id)
-    if @order = Order.create!(order_params)
+    if @order = Order.create(order_params)
       @cart_products.each do |cart_product|
-        OrderProduct.create!(
+        OrderProduct.create(
           order_id: @order.id,
           product_id: cart_product.product_id,
           tax_price: cart_product.product.include_tax,
