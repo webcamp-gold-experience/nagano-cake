@@ -1,0 +1,13 @@
+<div class="container-fluid mt-5">
+  <div class="product-title">
+    <h2>商品一覧</h2>
+    <h2>（<%= @products.count %>件）</h2>
+  </div>
+  <%= render "public/products/genre_search", genres: @genres %>
+  <div class="products-box">
+    <%= render "public/products/products" , products: @products  %>
+  </div>
+</div>
+<div class="pagenate-product">
+  <%= paginate @products %>
+</div>

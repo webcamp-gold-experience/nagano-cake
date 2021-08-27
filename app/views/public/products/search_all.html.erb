@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="search-message text-center mt-5 mb-5">
+    <% if @word == "" %>
+     <h2>全商品一覧</h2>
+     <h4>(全<%= @products.count %>件)</h4>
+    <% elsif @genre.present? %>
+      <h2>ジャンル : <%= @word %></h2>
+      <h4>(全<%= @products.count %>件)</h4>
+    <% elsif @products.present? %>
+      <h2>検索ワード：「<%= @word %>」</h2>
+      <h4>(全<%= @products.count %>件)</h4>
+    <% else %>
+      <h2>検索結果はありません。</h2>
+    <% end %>
+  </div>
+
+   <%= render "genre_search", genres: @genres %>
+   <div class="products-box">
+     <%= render "public/products/products" , products: @products  %>
+   </div>
+</div>
+

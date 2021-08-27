@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="product-title">
+    <h2>新着商品</h2>
+  </div>
+  <div class="genre_search">
+    <%= render "public/products/genre_search", genres: @genres %>
+  </div>
+  <div class="products-box">
+    <%= render "public/products/products" , products: @products  %>
+  </div>
+  <div class="row float-right">
+    <%= link_to "全ての商品を見る 》", products_path %>
+  </div>
+</div>

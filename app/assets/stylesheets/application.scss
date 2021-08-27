@@ -1,0 +1,478 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS /assets/images/img-01.jpgfile within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+a, p, th, td, h1, h2, h3, h4, h5{
+  //text-decoration: none;
+  color: #696969;
+  font-weight: normal;
+}
+
+// ヘッダー
+/*==================================================
+　5-3-1 中心から外に線が伸びる（下部）
+===================================*/
+
+.nav-link{
+    /*線の基点とするためrelativeを指定*/
+  position: relative;
+}
+
+.nav-link.current,
+.nav-link:hover{
+  color:#0481A2;
+}
+
+.nav-link::after {
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  /*線の形状*/
+  width: 80%;
+  height: 2px;
+  background: #666c67;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0, 1);/*X方向0、Y方向1*/
+  transform-origin: center top;/*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.nav-link.current::after,
+.nav-link:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+.about-comment {
+  color: #696969;
+  font-weight: lighter;
+  text-size: 30px;
+  padding: 0 400px;
+}
+
+//ボディ
+body {
+  animation-name: fadeInAnime;
+  animation-fill-mode:backwards;
+  animation-duration:2s;
+  animation-timing-function:ease;
+  animation-delay: 0.5s;
+  animation-direction:normal;
+  background-color: #f1eae7;
+  }
+
+@keyframes fadeInAnime{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+// ジャンル検索
+.genre-list {
+  list-style: none;
+  padding: 0;
+}
+.genre-search-text{
+  text-size: 15px;
+}
+.genre-link:hover{
+  color: white;
+}
+// トップ画面
+.product-title{
+  //font-family: 'Hannotate TC',sans-serif;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 50px;
+  // border-bottom: double #FAEBD7;
+}
+
+
+#box{
+  height: 600px;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+  .navbar {
+    position: absolute;
+    top: 7%;
+    left: 70%;
+    z-index: 9999;
+  }
+  .navbar-brand {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 9999;
+  }
+  #welcome-name {
+    color: #696969;
+    position: absolute;
+    top: 18%;
+    left: 2%;
+    z-index: 9999;
+  }
+  .box-text {
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    z-index: 9999;
+
+    h1{
+      //font-family: 'Hannotate TC',sans-serif;
+      text-align: center;
+      font-size: 7vw;
+    }
+    p{
+      // font-family: 'Hannotate TC',sans-serif;
+      text-align: center;
+      font-size: 1.8vw;
+    }
+  }
+  #images{
+    .image1 {
+      background-image: url(A.jpeg);
+      background-size : cover ;
+    }
+    .image2 {
+      background-image: url(B.jpeg);
+      background-size : cover ;
+    }
+    .image3 {
+      background-image: url(C.jpeg);
+      background-size : cover ;
+    }
+    .image4 {
+      background-image: url(D.jpeg);
+      background-size : cover ;
+    }
+  }
+}
+
+.new-products{
+  .product-box{
+    // border: 1px solid #f0f0f0;
+    transition: 0.5s;
+    margin-top: 40px;
+  }
+  .product-box:hover{
+    color: black;
+  }
+  .name{
+    //font-family: 'Hannotate TC',sans-serif;
+    text-size: 100px;
+    border-bottom: 1px #DEB887;
+
+  }
+  .price{
+    //font-family: 'Hannotate TC',sans-serif;
+    text-size: 50px;
+  }
+  .introduction{
+    //font-family: "MS Pゴシック";
+    text-size: 30px;
+  }
+}
+
+// ジャンル検索
+.genre_search{
+  //font-family: 'Hannotate TC',sans-serif;
+}
+.test:hover{
+  color: black;
+  text-decoration: none;
+}
+
+// アバウト画面
+.about-top{
+  .about-header{
+    position: relative;
+    .about-top-image{
+      width: 100%;
+      height: auto;
+    }
+    .navbar-brand{
+      position: absolute;
+      z-index: 9999;
+      top: 7%;
+      left: 37.5%;
+    }
+  }
+  .about-title{
+    h4{
+      font-size: 40px;
+      color: rgb(77,54,40);
+    }
+    .about-comment{
+      font-size: 20px;
+      line-height: 3;
+       color: rgb(77,54,40);
+    }
+    .about-botton{
+      font-size: 30px;
+     .about-products-btn {
+        display       : inline-block;
+        font-size     : 18pt;        /* 文字サイズ */
+        text-align    : center;      /* 文字位置   */
+        cursor        : pointer;     /* カーソル   */
+        padding       : 12px 12px;   /* 余白       */
+        background    : #999999;     /* 背景色     */
+        color         : #ffffff;     /* 文字色     */
+        line-height   : 1em;         /* 1行の高さ  */
+        transition    : .3s;         /* なめらか変化 */
+        box-shadow    : 4px 4px 7px #666666;  /* 影の設定 */
+      }
+      .about-products-btn:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+      }
+    }
+  }
+}
+.about-images{
+  position: relative;
+  .about-image1{
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    top: -50px;
+    left: -80px;
+  }
+  .about-image2{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 210px;
+    top: 100px;
+  }
+   .about-image3{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: 160px;
+    top: 90px;
+  }
+   .about-image4{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: -80px;
+    top: -70px;
+  }
+}
+
+
+// 商品詳細ページ
+.product-show{
+  height: 300px;
+  border: 1px;
+}
+.product-show-img{
+  position: relative;
+  height: 500px;
+  position: relative;
+  width: 40%;
+  img{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    border: solid 5px #696969;
+  }
+  img:hover{
+    border: solid 5px #dcdcdc;
+  }
+}
+.product-show-detail{
+  //font-family: 'Hannotate TC',sans-serif;
+  padding: 0 40px 0 40px;
+  .product-name{
+    font-size: 30px;
+    border-bottom:  solid 1px #696969;
+    text-align: center;
+  }
+  .right-product-detail{
+    text-align: right;
+
+    .product-introduction{
+      font-size: 20px;
+    }
+  .product_include_tax{
+    justify-content: flex-end;
+    .product-price{
+      font-size: 20px;
+    }
+  }
+    input{
+      display: block;
+      margin: 0 0 0 auto;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      line-height: 30px;
+      padding: 10px 40px;
+      background-color: #f5deb3;
+      color: #696969;
+      border: solid 2px #696969;
+      //font-family:  "MS Pゴシック";
+      background-color: white;
+    }
+    input:hover{
+      background-color: #696969;
+      color: white;
+      border: solid 2px #696969;
+      //font-family:  "MS Pゴシック";
+    }
+
+  }
+}
+
+// ページネーション中央よせ
+.pagination {
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+.pagination li.current a {
+	background-color: white;
+	border: 1px solid #f5deb3;
+	color: white;
+}
+.pagination li a {
+	background-color: #deb887;
+	border: white;
+	color: white;
+}
+.pagination a:hover {
+  background-color: #faebd7;
+　color: white;
+　font-size: 20px;
+　font-weight: bold
+}
+
+i {
+  display: inline-block;
+  margin: 0px 10px;
+}
+
+.page-item.active .page-link {
+  background-color: #f5deb3;
+}
+
+/*========= 検索窓のためのCSS ===============*/
+
+/*検索窓のエリア*/
+ #search-wrap {
+  // position: absolute;/*絶対配置にして*/
+   z-index: 2;/*最前面に設定。数字は変更可*/
+   top:10px;
+   right:10px;
+}
+
+/*テキスト入力input設定*/
+ #search-text{
+  -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
+  width: 40px;/*テキスト入力エリアが伸びる前の横幅*/
+  height: 40px;
+  padding: 1px;
+  border: none;
+  background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 10px center;/*虫眼鏡アイコンを背景に表示*/
+  background-size: 25px 25px;
+  transition: all 0.5s;/*transitionを使ってスムースに伸ばす*/
+  outline: none;
+  cursor: pointer;/*カーソルを指マークに*/
+}
+
+/*テキスト入力inputにフォーカスした時の形状*/
+ #search-text:focus {
+  width: 200px;/*テキスト入力エリアが伸びる後の横幅*/
+  padding: 20px 0 20px 60px;
+  box-shadow: 0 2px rgba(6,0,1,.26);
+}
+
+/*　画像の拡大＋テキスト出現　*/
+
+.zoomInText{/*テキストの基点となる位置を定義*/
+  position: relative;
+}
+
+.zoomInText span.mask{
+  position: relative;
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+  display: block;/*画像をくくるspanタグをブロック要素にする*/
+  line-height: 0;/*行の高さを0にする*/
+  overflow:hidden;/*拡大してはみ出る要素を隠す*/
+}
+
+.zoomInText:hover span.mask::before{/*hoverした時の変化*/
+  content:"";
+  position: absolute;
+  z-index:2;
+  top:10px;
+  left:10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background:rgba(0,0,0,0.5);/*背景色*/
+}
+
+.zoomInText img{
+  transform: scale(1);
+  filter: blur(0);
+  transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+}
+
+.zoomInText:hover img{/*hoverした時の変化*/
+  transform: scale(1.2);/*拡大の値を変更したい場合はこの数値を変更*/
+  filter: blur(2px);/*ぼかし具合を変更したい場合はこの数値を変更*/
+}
+
+.zoomInText span.cap{
+  opacity:0;
+  transition: .5s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+  position: absolute;
+  z-index:3;/*テキストを前面に出す*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    line-height: 1.5;/*行の高さを1.5にする*/
+}
+
+.zoomInText:hover span.cap{/*hoverした時の変化*/
+  opacity:1;
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+/*　横幅　*/
+
+.zoomInText{
+  width: 100%;
+  margin: 0 auto;/*中央揃え*/
+}
+
+footer {
+  text-align: center;
+  font-size: 3px;
+  .copyright {
+    margin: 50px auto;
+  }
+}

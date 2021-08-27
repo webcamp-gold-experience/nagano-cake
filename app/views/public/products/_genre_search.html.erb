@@ -1,0 +1,18 @@
+<div class="genres-box">
+  <h5 class="text-center genre-search-text">Genre</h5>
+  <div class="genre-box justify-content-center">
+    <div class="row pr-3 pl-3 justify-content-center">
+      <% @genres.each do |genre| %>
+        <div class="col-lg-1 col-sm-3 text-center mt-3">
+          <ul class="genre-list text-center">
+            <li>
+              <div>
+                <%= link_to genre.name, genre_searches_path(genre.id), class:"genre-link text-nowrap" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
