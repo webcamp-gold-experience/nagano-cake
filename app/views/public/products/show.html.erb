@@ -1,14 +1,9 @@
-   <div class="product-title">
-    <h2 class ="mb-5">商品詳細</h2>
-    <%= render "genre_search", genres: @genres %>
-  </div>
+<div class="product-title">
+  <h2 class ="mb-5">商品詳細</h2>
+  <%= render "genre_search", genres: @genres %>
+</div>
 <div class="container pb-5">
   <div class="row mt-5">
-
-    <!--<div class="col-6">-->
-    <!--    <%#= attachment_image_tag @product, :image, :fill, 500, 400, format: 'jpeg' %>-->
-    <!--  </div>-->
-
     <div class="col-6 zoomInText">
       <span class="mask">
         <%= attachment_image_tag @product, :image, :fill, 550, 400, format: 'jpeg' %>

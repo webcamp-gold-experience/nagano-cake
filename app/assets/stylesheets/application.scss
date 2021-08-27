@@ -125,11 +125,7 @@ body {
   #welcome-name {
     color: #696969;
     position: absolute;
-<<<<<<< HEAD
-    top: 17%;
-=======
     top: 18%;
->>>>>>> 48e4895e37c6f1769abd051c6b493436dea6f551
     left: 2%;
     z-index: 9999;
   }
@@ -280,28 +276,6 @@ body {
   }
 }
 
-// サンクスページ
-#TextTyping {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 1.5rem;
-  letter-spacing: .5em;
-    word-break : break-all;
-}
-#TextTyping span {
-  display: none;
-}
-
-/*文字列後ろの線の設定*/
-#TextTyping::after {
-  content: "|";
-  animation: typinganime .8s ease infinite;
-}
-
-@keyframes typinganime{
-  from{opacity:0}
-  to{opacity:1}
-}
 // ページネーション中央よせ
 .pagination {
   justify-content: center;
@@ -366,7 +340,6 @@ i {
   box-shadow: 0 2px rgba(6,0,1,.26);
 }
 
-
 /*　画像の拡大＋テキスト出現　*/
 
 .zoomInText{/*テキストの基点となる位置を定義*/
@@ -419,7 +392,6 @@ i {
   opacity:1;
 }
 
-
 /*========= レイアウトのためのCSS ===============*/
 
 /*　横幅　*/
@@ -428,4 +400,3 @@ i {
   width: 100%;
   margin: 0 auto;/*中央揃え*/
 }
-
