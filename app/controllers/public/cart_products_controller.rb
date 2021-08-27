@@ -1,4 +1,6 @@
 class Public::CartProductsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @cart_products = CartProduct.where(customer_id: current_customer.id)
     @numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -38,6 +40,7 @@ class Public::CartProductsController < ApplicationController
     redirect_to cart_products_path
     flash[:notice_destroy] = "Cart prodcuts were successfully destroyed."
   end
+  
 
   private
   def cart_product_params

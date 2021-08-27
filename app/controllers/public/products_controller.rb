@@ -1,4 +1,6 @@
 class Public::ProductsController < ApplicationController
+  before_action :authenticate, only: [:show]
+
   def index
     @products = Product.where(sales_status:0).page(params[:page]).per(6)
     @genres = Genre.all
@@ -56,4 +58,7 @@ class Public::ProductsController < ApplicationController
     end
   end
 
+  def authenticate
+    redirect_to new_customer_registration_url unless customer_signed_in?
+  end
 end
