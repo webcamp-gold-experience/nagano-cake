@@ -4,6 +4,9 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @cart_products = CartProduct.where(customer_id: current_customer.id)
+    if @cart_products.empty?
+      redirect_to cart_products_path
+    end
   end
 
   def confirm
@@ -14,25 +17,28 @@ class Public::OrdersController < ApplicationController
       @order.delivery_address = current_customer.address
       @order.delivery_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-      @selected_address = Address.find(params[:order][:address_id])
-      @order.delivery_postal_code =  @selected_address.postal_code
-      @order.delivery_address =  @selected_address.address
-      @order.delivery_name =  @selected_address.name
+      if params[:order][:address_id].present?
+        @selected_address = Address.find(params[:order][:address_id])
+        @order.delivery_postal_code =  @selected_address.postal_code
+        @order.delivery_address =  @selected_address.address
+        @order.delivery_name =  @selected_address.name
+      end
     elsif params[:order][:address_option] == "2"
       @order.delivery_postal_code = params[:order][:delivery_postal_code]
       @order.delivery_address = params[:order][:delivery_address]
       @order.delivery_name = params[:order][:delivery_name]
-      if @order.delivery_postal_code.empty? || @order.delivery_address.empty? || @order.delivery_name.empty?
-        redirect_to new_order_path
-      end
+    end
+    if
+      @order.delivery_postal_code.empty? || @order.delivery_address.empty? || @order.delivery_name.empty?
+      redirect_to new_order_path
     end
   end
 
   def create
     @cart_products = CartProduct.where(customer_id: current_customer.id)
-    if @order = Order.create!(order_params)
+    if @order = Order.create(order_params)
       @cart_products.each do |cart_product|
-        OrderProduct.create!(
+        OrderProduct.create(
           order_id: @order.id,
           product_id: cart_product.product_id,
           tax_price: cart_product.product.include_tax,
