@@ -1,6 +1,8 @@
 class Public::ProductsController < ApplicationController
+  before_action :authenticate, only: [:show]
+
   def index
-    @products = Product.where(sales_status:0)
+    @products = Product.where(sales_status:0).page(params[:page]).per(6)
     @genres = Genre.all
 
   end
@@ -13,7 +15,7 @@ class Public::ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where(genre_id: params[:id], sales_status: 0)
+    @products = Product.where(genre_id: params[:id], sales_status: 0).page(params[:page]).per(9)
     @genres = Genre.all
     @genre = Genre.find(params[:id])
   end
@@ -29,7 +31,7 @@ class Public::ProductsController < ApplicationController
       end
 
     if @word == ""
-      @products = Product.all
+      @products = Product.all.page(params[:page]).per(6)
 
     elsif
       @genre.present?
@@ -56,4 +58,7 @@ class Public::ProductsController < ApplicationController
     end
   end
 
+  def authenticate
+    redirect_to new_customer_registration_url unless customer_signed_in?
+  end
 end

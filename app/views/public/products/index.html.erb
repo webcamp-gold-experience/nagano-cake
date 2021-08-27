@@ -3,33 +3,11 @@
     <h2>商品一覧</h2>
     <h2>（<%= @products.count %>件）</h2>
   </div>
-  <div class="row">
-     <div class="genre_search col-lg-2 col-sm-3">
-      <%= render "public/products/genre_search", genres: @genres %>
-     </div>
-    <div class="col-lg-10 col-sm-9">
-      <div class="new-products">
-        <div class="d-flex align-content-around flex-wrap">
-           <% @products.each do |product| %>
-              <div class="product-box mr-5 ml-5 mb-5">
-            <%= link_to product_path(product), class:"test" do %>
-                <div class="product-image mb-2">
-                  <%= attachment_image_tag product, :image, :fill, 250, 200, format: 'jpeg' %>
-                </div>
-                <div class="product-detail break-all break-word">
-                  <p class="name  text-center border-bottom pb-2 n">
-                    <%= product.name %>
-                  </p>
-                  <p class="price">¥<%= product.price %> (税込￥<%= product.include_tax.round %>)</p>
-                  <p class="introduction">
-                    <%= product.introduction %>
-                  </p>
-                </div>
-            <% end %>
-              </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+  <%= render "public/products/genre_search", genres: @genres %>
+  <div class="products-box">
+    <%= render "public/products/products" , products: @products  %>
   </div>
+</div>
+<div class="pagenate-product">
+  <%= paginate @products %>
 </div>
