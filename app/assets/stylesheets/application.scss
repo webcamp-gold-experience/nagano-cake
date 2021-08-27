@@ -468,3 +468,11 @@ i {
   width: 100%;
   margin: 0 auto;/*中央揃え*/
 }
+
+footer {
+  text-align: center;
+  font-size: 3px;
+  .copyright {
+    margin: 50px auto;
+  }
+}
