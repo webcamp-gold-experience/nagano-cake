@@ -5,5 +5,6 @@ class Public::HomesController < ApplicationController
   end
 
   def about
+     @products = Product.order(created_at: :desc).limit(6)
   end
 end
