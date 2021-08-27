@@ -15,21 +15,23 @@
       </span>
     </div>
 
-    <div class="col-lg-6 col-md-10 col-sm-10">
+    <div class="col-lg-6 col-md-10 col-sm-10 pr-4 pl-4">
       <div class="product-show-detail">
-        <p class="product-name"><%= @product.name %></p>
-        <p class="product-introduction"><%= @product.introduction %></p>
-        <div class="d-flex flex-row mt-6">
-          <p class="product-price">¥<%= @product.include_tax.round %></p>
-          <p class="product-price">(税込)</p>
-        </div>
-        <div class="cart-button">
-        <%= form_with model: @cart_product, url: create_cart_products_path, method: :post, local: true do |f| %>
-          <%= f.hidden_field :product_id, value: @product.id %>
-          <%= f.hidden_field :customer_id, value: current_customer.id %>
-          <%= f.select :amount, @numbers, class:"select" %>
-          <%= f.submit 'カートに入れる', class:"btn btn-outline-secondary" %>
-        <% end %>
+        <p class="product-name pb-2"><%= @product.name %></p>
+        <div class="right-product-detail">
+          <p class="product-introduction"><%= @product.introduction %></p>
+          <div class="d-flex flex-row mt-6 product_include_tax">
+            <p class="product-price">¥<%= @product.include_tax.round %></p>
+            <p class="product-price">(税込)</p>
+          </div>
+          <div class="cart-button">
+          <%= form_with model: @cart_product, url: create_cart_products_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.select :amount, @numbers, class:"select" %>
+            <%= f.submit 'カートに入れる', class:"btn btn-outline-secondary" %>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>

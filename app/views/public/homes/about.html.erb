@@ -1,22 +1,36 @@
-<div class="container-fulid">
-  <div class="row">
-    <div class="col">
-
-<div id="aboutbox" >
-  <div class="box-text">
-  <%= link_to image_tag("ロゴ大.PNG", width: 300), "/", class:"navbar-brand p-3" %>
-  <p class="about-comment">
-    ながのCAKEは全国発送可能なケーキ屋さんです。<br>
-    お子様からお年寄りの方までお召し上がりいただけるよう、<br>
-    様々なバリエーションをご用意しております。<br>
-    また、全国へ発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。<br>
-    ぜひご注文ください。
-  </p>
+<div class="about-top">
+  <div class="about-header">
+   <%= image_tag 'about-header.jpg', :width => '100%', :height => 'auto', class:"about-top-image" %>
+   <%= link_to image_tag("ロゴ大.PNG", width: 300), "/", class:"navbar-brand p-3" %>
   </div>
-  <div class="about-image">
-    <%= image_tag 'about.jpg', :width => '100%', :height => '100%' %>
+  <div class="about-title text-center pt-5">
+    <h4 class ="pb-5">NAGANOCAKEについて</h4>
+    <p class="about-comment">
+        「NAGANOCAKE」は全国発送可能なケーキ屋さんです。
+        お子様からお年寄りの方までお召し上がりいただけるよう、
+        様々なバリエーションをご用意しております。
+        また、全国へ発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。
+        ぜひご注文ください。
+    </p>
+    <div class="about-botton pt-5">
+      <%= link_to "商品一覧へ" , products_path , class:"about-products-btn"%>
+    </div>
   </div>
 </div>
+<div class="container">
+  <div class="about-images">
+    <div class="about-image1 about-image p-5">
+      <%= image_tag 'momo.png', :width => '100%', :height => 'auto' %>
     </div>
+    <div class="about-image2 p-5">
+      <%= image_tag 'choco.png', :width => '100%', :height => 'auto' %>
+    </div>
+    <div class="about-image3 p-5">
+      <%= image_tag 'cake.png', :width => '100%', :height => 'auto' %>
+    </div>
+    <div class="about-image4 p-5">
+      <%= image_tag 'bake.png', :width => '100%', :height => 'auto' %>
+    </div>
+  </div>
   </div>
 </div>

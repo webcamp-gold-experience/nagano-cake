@@ -59,8 +59,10 @@ a, p, th, td, h1, h2, h3, h4, h5{
 
 
 .about-comment {
-  color: #665a1a;
+  color: #696969;
   font-weight: lighter;
+  text-size: 30px;
+  padding: 0 400px;
 }
 
 //ボディ
@@ -201,27 +203,82 @@ body {
 }
 
 // アバウト画面
-#aboutbox{
-  height: 500px;
-  position: relative;
-  width: 100%;
-  color: brown;
-  .box-text {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    z-index: 9999;
-
-    h1{
-      //font-family: 'Hannotate TC',sans-serif;
-      font-size: 5vw;
+.about-top{
+  .about-header{
+    position: relative;
+    .about-top-image{
+      width: 100%;
+      height: auto;
     }
-    p{
-      font-size: 1.7vw;
-      line-height: 200%;
+    .navbar-brand{
+      position: absolute;
+      z-index: 9999;
+      top: 7%;
+      left: 37.5%;
+    }
+  }
+  .about-title{
+    h4{
+      font-size: 40px;
+      color: rgb(77,54,40);
+    }
+    .about-comment{
+      font-size: 20px;
+      line-height: 3;
+       color: rgb(77,54,40);
+    }
+    .about-botton{
+      font-size: 30px;
+     .about-products-btn {
+        display       : inline-block;
+        font-size     : 18pt;        /* 文字サイズ */
+        text-align    : center;      /* 文字位置   */
+        cursor        : pointer;     /* カーソル   */
+        padding       : 12px 12px;   /* 余白       */
+        background    : #999999;     /* 背景色     */
+        color         : #ffffff;     /* 文字色     */
+        line-height   : 1em;         /* 1行の高さ  */
+        transition    : .3s;         /* なめらか変化 */
+        box-shadow    : 4px 4px 7px #666666;  /* 影の設定 */
+      }
+      .about-products-btn:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+      }
     }
   }
 }
+.about-images{
+  position: relative;
+  .about-image1{
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    top: -50px;
+    left: -80px;
+  }
+  .about-image2{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 210px;
+    top: 100px;
+  }
+   .about-image3{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: 160px;
+    top: 90px;
+  }
+   .about-image4{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    right: -80px;
+    top: -70px;
+  }
+}
+
 
 // 商品詳細ページ
 .product-show{
@@ -245,34 +302,45 @@ body {
 }
 .product-show-detail{
   //font-family: 'Hannotate TC',sans-serif;
-  padding-top: 60px;
+  padding: 0 40px 0 40px;
   .product-name{
     font-size: 30px;
     border-bottom:  solid 1px #696969;
-  }
-  .product-introduction{
-    font-size: 20px;
-  }
-  .product-price{
-    font-size: 20px;
-  }
-  input{
-    margin-top: 20px;
-    display: block;
     text-align: center;
-    line-height: 30px;
-    padding: 10px 40px;
-    background-color: #f5deb3;
-    color: #696969;
-    border: solid 2px #696969;
-    //font-family:  "MS Pゴシック";
-    background-color: white;
   }
-  input:hover{
-    background-color: #696969;
-    color: white;
-    border: solid 2px #696969;
-    //font-family:  "MS Pゴシック";
+  .right-product-detail{
+    text-align: right;
+
+    .product-introduction{
+      font-size: 20px;
+    }
+  .product_include_tax{
+    justify-content: flex-end;
+    .product-price{
+      font-size: 20px;
+    }
+  }
+    input{
+      display: block;
+      margin: 0 0 0 auto;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      line-height: 30px;
+      padding: 10px 40px;
+      background-color: #f5deb3;
+      color: #696969;
+      border: solid 2px #696969;
+      //font-family:  "MS Pゴシック";
+      background-color: white;
+    }
+    input:hover{
+      background-color: #696969;
+      color: white;
+      border: solid 2px #696969;
+      //font-family:  "MS Pゴシック";
+    }
+
   }
 }
 
