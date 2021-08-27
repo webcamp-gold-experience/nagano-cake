@@ -1,8 +1,5 @@
 class Public::ProductsController < ApplicationController
-
   before_action :authenticate, only: [:show]
-
-
 
   def index
     @products = Product.where(sales_status:0).page(params[:page]).per(6)
