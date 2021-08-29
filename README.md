@@ -1,24 +1,45 @@
-# README
+NaganoCakeのECサイト
+ -チーム開発課題[ゴールド・エクペリエンス]
+ 
+開発者
+　-しょうた・こんちゃん・りゅうたろう
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+実装した機能
+ -会員 
+  １　ログイン機能
+  2 ログアウト機能 
+  3 商品一覧表示機能
+  4 商品詳細情報表示機能
+  5 カート追加機能
+  6 カート一覧機能
+  7 カート編集機能
+  8 注文機能
+  9 会員情報編集機能
+  10 退会機能
+  11 配送先追加・編集機能
+  12 注文履歴一覧表示機能
+  13 注文履歴詳細表示機能
+ -管理者
+  1 ログイン機能
+  2 ログアウト機能
+  3 注文履歴一覧表示機能
+  4 注文履歴詳細表示機能
+  5 顧客一覧表示機能 
+  6 顧客詳細情報表示機能 
+  7 商品一覧表示機能 
+  8 商品詳細情報表示機能 
+  9 商品情報変更機能 ・商品の登録情報を変更することができる。
+  10 ジャンル設定機能 ・ジャンルの追加・変更を行うことができる。
+ 
+使用したGemfile
+ -devise
+ -bootstrap5
+ -refile
+ -refile-mini_magic
+ -jquery-rails
+ -font-awesome-sass
+ -rails-i18n
+ -enumhelp
+ -kaminari
+ -miyabi
+ -byebug
